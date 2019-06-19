@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const mysql = require('mysql');
 const db = require('../dbconn');
 
 //Select all records from pfleger

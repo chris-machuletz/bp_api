@@ -1,4 +1,3 @@
-var express = require('express');
 const mysql = require('mysql');
 
 //DB connection for plesk
