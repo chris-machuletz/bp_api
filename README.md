@@ -1,3 +1,3 @@
-# Express-based Demo App
+# DM Bachelorprojekt 2019 der Hochschule Fulda
 
-A simple [Express](http://expressjs.com/)-based app to test [Node.js](http://nodejs.org/) support.
+API für Zugriff auf Datenbank für Alexa-Skill im Rahmen des Bachelorprojekts 2019 im Fachbereich Digitale Medien der Hochschule Fulda 
