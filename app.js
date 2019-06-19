@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const mysql = require('mysql');
 const port = process.env.PORT || 3000;
-const db = require('../db_conn');
+const db = require('./db_conn');
 
 //var users = require('./routes/users');
 
