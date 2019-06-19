@@ -13,3 +13,4 @@ API für Zugriff auf Datenbank für Alexa-Skill im Rahmen des Bachelorprojekts 2
 * <https://api.imkerei-bienenfreund.de/pfleger/1>
 
 ## Geplante Routes
+* Derzeit keine Anfragen offen
