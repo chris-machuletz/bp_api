@@ -19,7 +19,7 @@ db.connect((err) => {
 });
 
 //Select all records from bewohner
-app.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
 	db.query('SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner', function (err, results) {
         if (err) throw err;
         res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
@@ -27,7 +27,7 @@ app.get('/', function(req, res, next) {
 });
 
 //Select a single record from bewohner
-app.get('/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
 	db.query(`SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner WHERE bewohner_id = ${req.params.id}`, function (err, results) {
 		if (err) throw err;
 		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
