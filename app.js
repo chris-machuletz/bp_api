@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/bewohner', require('./routes/bewohner'));
+//app.use('/bewohner', require('./routes/bewohner'));
 //app.use('/pfleger', require('./routes/pfleger'));
 
 //DB connection for plesk
