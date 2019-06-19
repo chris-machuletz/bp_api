@@ -7,8 +7,9 @@ var bodyParser = require('body-parser');
 const mysql = require('mysql');
 const port = process.env.PORT || 3000;
 
-//var routes = require('./routes/index');
-// var users = require('./routes/users');
+var index = require('./routes/index');
+app.use('/routes/index');
+//var users = require('./routes/users');
 
 var app = express();
 
