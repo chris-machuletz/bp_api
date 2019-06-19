@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/users', require('./routes/users'));
+app.use('/bewohner', require('./routes/bewohner'));
 
 //DB connection for plesk
 const db = mysql.createConnection({
@@ -40,22 +40,6 @@ db.connect((err) => {
       throw err;
   }
   console.log('MySQL Connected');
-});
-
-//Select all records from bewohner
-app.get('/bewohner', function(req, res, next) {
-	db.query('SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner', function (err, results) {
-        if (err) throw err;
-        res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
-	});
-});
-
-//Select a single record from bewohner
-app.get('/bewohner/:id', function(req, res, next) {
-	db.query(`SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner WHERE bewohner_id = ${req.params.id}`, function (err, results) {
-		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
-	});
 });
 
 //Select all records from pfleger
