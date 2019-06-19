@@ -33,3 +33,5 @@ app.get('/:id', function(req, res, next) {
 		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
 	});
 });
+
+module.exports = router;
