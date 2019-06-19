@@ -6,11 +6,11 @@ API für Zugriff auf Datenbank für Alexa-Skill im Rahmen des Bachelorprojekts 2
 
 **Daten der Bewohner**
 * <https://api.imkerei-bienenfreund.de/bewohner/>
-* <https://api.imkerei-bienenfreund.de/bewohner/1>
+* <https://api.imkerei-bienenfreund.de/bewohner/1> *die jeweilige bewohner_id als letzter Parameter*
 
 **Daten der Pfleger**
 * <https://api.imkerei-bienenfreund.de/pfleger/>
-* <https://api.imkerei-bienenfreund.de/pfleger/1>
+* <https://api.imkerei-bienenfreund.de/pfleger/1> *die jeweilige pfleger_id als letzter Parameter*
 
 ## Geplante Routes
 * Derzeit keine Anfragen offen
