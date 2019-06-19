@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/bewohner', require('./routes/bewohner'));
-app.use('/pfleger', require('./routes/pfleger'));
 
 //DB connection for plesk
 const db = mysql.createConnection({
@@ -40,6 +40,22 @@ db.connect((err) => {
       throw err;
   }
   console.log('MySQL Connected');
+});
+
+//Select all records from pfleger
+app.get('/pfleger', function(req, res, next) {
+	db.query('SELECT * FROM pfleger', function (err, results) {
+        if (err) throw err;
+        res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+	});
+});
+
+//Select a single record from pfleger
+app.get('/pfleger/:id', function(req, res, next) {
+	db.query(`SELECT * FROM pfleger WHERE pfleger_id = ${req.params.id}`, function (err, results) {
+		if (err) throw err;
+		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+	});
 });
 
 
