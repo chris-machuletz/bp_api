@@ -1,3 +1,5 @@
+const mysql = require('mysql');
+
 //DB connection for plesk
 const dbconn = mysql.createConnection({
     host     : 'localhost',
