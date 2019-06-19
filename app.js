@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-const mysql = require('mysql');
 const port = process.env.PORT || 3000;
 
 //var users = require('./routes/users');
@@ -25,38 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/bewohner', require('./routes/bewohner'));
-
-//DB connection for plesk
-const db = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'alexa_db_user',
-  password : '10iw?i3I',
-  database : 'cm_alexa'
-});
-
-//Connect
-db.connect((err) => {
-  if(err){
-      throw err;
-  }
-  console.log('MySQL Connected');
-});
-
-//Select all records from pfleger
-app.get('/pfleger', function(req, res, next) {
-	db.query('SELECT * FROM pfleger', function (err, results) {
-        if (err) throw err;
-        res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
-	});
-});
-
-//Select a single record from pfleger
-app.get('/pfleger/:id', function(req, res, next) {
-	db.query(`SELECT * FROM pfleger WHERE pfleger_id = ${req.params.id}`, function (err, results) {
-		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
-	});
-});
+app.use('/pfleger', require('./routes/pfleger'));
 
 
 // catch 404 and forward to error handler
