@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const mysql = require('mysql');
 const port = process.env.PORT || 3000;
-const db = require('./db_conn');
 
 //var users = require('./routes/users');
 
@@ -26,6 +25,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/users', require('./routes/users'));
+
+//DB connection for plesk
+const db = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'alexa_db_user',
+  password : '10iw?i3I',
+  database : 'cm_alexa'
+});
+
+//Connect
+db.connect((err) => {
+  if(err){
+      throw err;
+  }
+  console.log('MySQL Connected');
+});
 
 //Select all records from bewohner
 app.get('/bewohner', function(req, res, next) {
