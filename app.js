@@ -44,7 +44,7 @@ db.connect((err) => {
 });
 
 //Select all records from pfleger
-app.get('/', function(req, res, next) {
+app.get('/pfleger', function(req, res, next) {
 	db.query('SELECT * FROM pfleger', function (err, results) {
         if (err) throw err;
         res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
@@ -52,7 +52,7 @@ app.get('/', function(req, res, next) {
 });
 
 //Select a single record from pfleger
-app.get('/:id', function(req, res, next) {
+app.get('/pfleger/:id', function(req, res, next) {
 	db.query(`SELECT * FROM pfleger WHERE pfleger_id = ${req.params.id}`, function (err, results) {
 		if (err) throw err;
 		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
