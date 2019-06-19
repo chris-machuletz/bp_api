@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-const mysql = require('mysql');
 const port = process.env.PORT || 3000;
 
 //var users = require('./routes/users');
@@ -26,22 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/bewohner', require('./routes/bewohner'));
 app.use('/pfleger', require('./routes/pfleger'));
-
-//DB connection for plesk
-const db = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'alexa_db_user',
-  password : '10iw?i3I',
-  database : 'cm_alexa'
-});
-
-//Connect
-db.connect((err) => {
-  if(err){
-      throw err;
-  }
-  console.log('MySQL Connected');
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
