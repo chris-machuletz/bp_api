@@ -2,9 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  console.log("Connected to Index");
-  res.render('index', { title: 'Index: Express powered by Plesk' });
+router.get('/test', (req, res) => {
+  res.send('Test route');
 });
 
 // router.get('/', function(req, res, next) {

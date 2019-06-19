@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 
 var app = express();
 
-app.use('/api', require('./routes/index'));
+app.use(require('./routes'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
