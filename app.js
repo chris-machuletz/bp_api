@@ -9,9 +9,7 @@ const port = process.env.PORT || 3000;
 
 //var users = require('./routes/users');
 
-var app = express();
-
-app.use(require('./routes'));
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +22,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use('/users', require('./routes/users'));
 
 //DB connection for plesk
 const db = mysql.createConnection({
@@ -76,7 +77,7 @@ app.get('/pfleger/:id', function(req, res, next) {
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Route not Found');
+  var err = new Error('Unknown Request');
   err.status = 404;
   next(err);
 });
