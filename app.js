@@ -26,22 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', require('./routes/users'));
 
-//DB connection for plesk
-const db = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'alexa_db_user',
-    password : '10iw?i3I',
-    database : 'cm_alexa'
-});
-
-//Connect
-db.connect((err) => {
-    if(err){
-        throw err;
-    }
-    console.log('MySQL Connected');
-});
-
 //Select all records from bewohner
 app.get('/bewohner', function(req, res, next) {
 	db.query('SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner', function (err, results) {
@@ -107,3 +91,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+module.exports = db;
