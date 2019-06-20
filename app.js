@@ -6,8 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 
-//var users = require('./routes/users');
-
 const app = express();
 
 // view engine setup

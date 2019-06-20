@@ -19,7 +19,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 // Add new record to bewohner
-router.post('/', function(req, res, next) {
+router.post('/test', function(req, res, next) {
 	const newBewohner = {
 		nachname: req.body.nachname,
 		vorname: req.body.vorname,
