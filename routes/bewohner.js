@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const db = require('../dbconn');
 
-//Select all records from bewohner
+// Select all records from bewohner
 router.get('/', function(req, res, next) {
 	db.query('SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner', function (err, results) {
         if (err) throw err;
@@ -10,9 +10,17 @@ router.get('/', function(req, res, next) {
 	});
 });
 
-//Select a single record from bewohner
+// Select a single record from bewohner
 router.get('/:id', function(req, res, next) {
 	db.query(`SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner WHERE bewohner_id = ${req.params.id}`, function (err, results) {
+		if (err) throw err;
+		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+	});
+});
+
+// Add new record to bewohner
+router.post('/', function(req, res, next) {
+	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES(${req.body.nachname}, ${req.body.vorname}, ${req.body.zimmernummer}, ${req.body.pflegegrad}, ${req.body.geburtsdatum}, ${req.body.geschlecht} )`, function (err, results) {
 		if (err) throw err;
 		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
 	});
