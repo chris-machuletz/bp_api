@@ -28,9 +28,13 @@ router.post('/', function(req, res, next) {
 		geburtsdatum: req.body.geburtsdatum,
 		geschlecht: req.body.geschlecht
 	}
-	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES(${newBewohner.nachname}, ${newBewohner.vorname}, ${newBewohner.zimmernummer}, ${newBewohner.pflegegrad}, ${newBewohner.geburtsdatum}, ${newBewohner.geschlecht} )`, function (err, results) {
-		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": newBewohner}));
+	var sql = `INSERT INTO bewohner(nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES(?, ?, ?, ?, ?, ?)`
+	db.query(sql, [newBewohner.nachname, newBewohner.vorname, newBewohner.zimmernummer, newBewohner.pflegegrad, newBewohner.geburtsdatum, newBewohner.geschlecht], function (err, results) {
+		if (err) {
+			throw err
+		} else {
+			res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": "Bewohner successfully inserted"}));
+		}
 	});
 });
 
