@@ -28,8 +28,7 @@ router.post('/', function(req, res, next) {
 		geburtsdatum: req.body.geburtsdatum,
 		geschlecht: req.body.geschlecht
 	}
-	var sql = `INSERT INTO bewohner(nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES(?, ?, ?, ?, ?, ?)`
-	db.query(sql, [newBewohner.nachname, newBewohner.vorname, newBewohner.zimmernummer, newBewohner.pflegegrad, newBewohner.geburtsdatum, newBewohner.geschlecht], function (err, results) {
+	db.query(`INSERT INTO bewohner(nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES('test', 'test', 101, 1, 10-10-1950, 'm')`, function (err, results) {
 		if (err) {
 			throw err
 		} else {
