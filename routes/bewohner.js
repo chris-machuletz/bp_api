@@ -6,7 +6,7 @@ const db = require('../dbconn');
 router.get('/', function(req, res, next) {
 	db.query('SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner', function (err, results) {
         if (err) throw err;
-        res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+        res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner", "error": null, "response": results}));
 	});
 });
 
@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
 	db.query(`SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner WHERE bewohner_id = ${req.params.id}`, function (err, results) {
 		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner/:id", "error": null, "response": results}));
 	});
 });
 
@@ -28,11 +28,11 @@ router.post('/', function(req, res, next) {
 		geburtsdatum: req.body.geburtsdatum,
 		geschlecht: req.body.geschlecht
 	}
-	db.query(`INSERT INTO bewohner(nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES('test', 'test', 101, 1, 10-10-1950, 'm')`, function (err, results) {
+	db.query(`INSERT INTO bewohner(nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES('test', 'test', 101, 1, STR_TO_DATE('1-01-2012', '%d-%m-%Y'), 'm')`, function (err, results) {
 		if (err) {
 			throw err
 		} else {
-			res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": "Bewohner successfully inserted"}));
+			res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner", "error": null, "response": "Bewohner successfully inserted"}));
 		}
 	});
 });
