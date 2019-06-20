@@ -20,9 +20,17 @@ router.get('/:id', function(req, res, next) {
 
 // Add new record to bewohner
 router.post('/', function(req, res, next) {
-	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES(${req.body.nachname}, ${req.body.vorname}, ${req.body.zimmernummer}, ${req.body.pflegegrad}, ${req.body.geburtsdatum}, ${req.body.geschlecht} )`, function (err, results) {
+	const newBewohner = {
+		nachname: req.body.nachname,
+		vorname: req.body.vorname,
+		zimmernummer: req.body.zimmernummer,
+		pflegegrad: req.body.pflegegrad,
+		geburtsdatum: req.body.geburtsdatum,
+		geschlecht: req.body.geschlecht
+	}
+	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES(${newBewohner.nachname}, ${newBewohner.vorname}, ${newBewohner.zimmernummer}, ${newBewohner.pflegegrad}, ${newBewohner.geburtsdatum}, ${newBewohner.geschlecht} )`, function (err, results) {
 		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": newBewohner}));
 	});
 });
 
