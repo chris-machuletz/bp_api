@@ -21,15 +21,15 @@ router.get('/:id', function(req, res, next) {
 // Add new record to bewohner
 router.post('/test', function(req, res) {
 	
-	// const newBewohner = {
-	// 	nachname: req.body.nachname,
-	// 	vorname: req.body.vorname,
-	// 	zimmernummer: req.body.zimmernummer,
-	// 	pflegegrad: req.body.pflegegrad,
-	// 	geburtsdatum: req.body.geburtsdatum,
-	// 	geschlecht: req.body.geschlecht
-	// }
-	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES ('${req.body.nachname}', '${req.body.vorname}', 103, 1, STR_TO_DATE('10-11-2012', '%d-%m-%Y'), 'm')`, function (err, results) {
+	const newBewohner = {
+		nachname: req.body.nachname,
+		vorname: req.body.vorname,
+		zimmernummer: parseInt(req.body.zimmernummer),
+		pflegegrad: parseInt(req.body.pflegegrad),
+		geburtsdatum: req.body.geburtsdatum,
+		geschlecht: req.body.geschlecht
+	}
+	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES ('${req.body.nachname}', '${req.body.vorname}', ${parseInt(req.body.zimmernummer)}, ${parseInt(req.body.pflegegrad)}, STR_TO_DATE('10-11-2012', '%d-%m-%Y'), 'm')`, function (err, results) {
 		if (err) {
 			throw err
 		} else {
