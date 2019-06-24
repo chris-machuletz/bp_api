@@ -37,26 +37,5 @@ router.post('/', function(req, res) {
 		}
 	});
 });
-// // Add new record to bewohner
-// router.post('/', function(req, res) {
-
-	
-// 	const newBewohner = {
-// 		nachname: req.body.nachname,
-// 		vorname: req.body.vorname,
-// 		zimmernummer: parseInt(req.body.zimmernummer),
-// 		pflegegrad: parseInt(req.body.pflegegrad),
-// 		geburtsdatum: req.body.geburtsdatum,
-// 		geschlecht: req.body.geschlecht
-// 	}
-// 	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES ('${newBewohner.nachname}', '${newBewohner.vorname}', ${newBewohner.zimmernummer}, ${newBewohner.pflegegrad}, STR_TO_DATE('${newBewohner.geburtsdatum}', '%Y-%m-%d'), '${newBewohner.geschlecht}')`, function (err, results) {
-// 		if (err) {
-// 			throw err
-// 		} else {
-// 			res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner", "error": null, "data": {"nachname": req.body.nachname, "vorname": req.body.vorname, "zimmernummer": req.body.zimmernummer, "pflegegrad": req.body.pflegegrad, "geburtsdatum": req.body.geburtsdatum, "geschlecht": req.body.geschlecht}}));
-// 		}
-// 	});
-
-// });
 
 module.exports = router;

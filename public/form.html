@@ -5,28 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>POST request test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
     <form action="/bewohner/" method="post">
-        <label for="vorname">
-            Vorname <input type="text" name="vorname" id=""><br>
-        </label>
-        <label for="nachname">
-            Nachname <input type="text" name="nachname" id=""><br>
-        </label>
-        <label for="zimmernummer">
-            Zimmernummer <input type="number" name="zimmernummer" id=""><br>
-        </label>
-        <label for="pflegegrad">
-            Pflegegrad <input type="number" name="pflegegrad" id=""><br>
-        </label>
-        <label for="geburtsdatum">
-            Geburtsdatum <input type="date" name="geburtsdatum" id=""><br>
-        </label>
-        <label for="geschlecht">
-            Geschlecht <input type="text" name="geschlecht" id=""><br>
-        </label>
-        <input type="submit" value="Submit">
+        <label for="vorname">Vorname</label>
+        <input type="text" name="vorname" id="vorname">
+        <label for="nachname">Nachname</label>
+        <input type="text" name="nachname" id="nachname">
+        <label for="zimmernummer">Zimmernummer</label>
+        <input type="number" name="zimmernummer" id="zimmernummer">
+        <label for="pflegegrad">Pflegegrad</label>
+        <input type="number" name="pflegegrad" id="pflegegrad">
+        <label for="geburtsdatum">Geburtsdatum</label>
+        <input type="date" name="geburtsdatum" id="geburtsdatum">
+        <label for="geschlecht">Geschlecht</label>
+        <input type="text" name="geschlecht" id="geschlecht">
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </body>
 </html>
