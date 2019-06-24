@@ -18,12 +18,8 @@ router.get('/:id', function(req, res, next) {
 	});
 });
 
-<<<<<<< HEAD
-// Add new record to bewohner after validating it
-router.post('/', bewohnerController.validate('createBewohner'), bewohnerController.createBewohner)
-=======
 // Add new record to bewohner
-router.post('/test', function(req, res) {
+router.post('/', function(req, res) {
 	
 	const newBewohner = {
 		nachname: req.body.nachname,
@@ -40,8 +36,7 @@ router.post('/test', function(req, res) {
 			res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner", "error": null, "req.body.nachname": req.body.geburtsdatum}));
 		}
 	});
->>>>>>> parent of f30d397... updated post@/bewohner
-
+});
 // // Add new record to bewohner
 // router.post('/', function(req, res) {
 

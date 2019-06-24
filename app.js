@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-const expressValidator = require('express-validator');
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -21,8 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json({ limit: '1mb' }));
-app.use(expressValidator());
-
 
 app.use('/bewohner', require('./routes/bewohner'));
 app.use('/pfleger', require('./routes/pfleger'));
