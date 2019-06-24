@@ -22,7 +22,7 @@ router.get('/:id', function(req, res, next) {
 router.get('/pn/:id', function(req, res, next) {
 	db.query(`SELECT * FROM pfleger WHERE persnr = ${req.params.id}`, function (err, results) {
 		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@pfleger/pn/:id", "error": null, "port": process.env.PORT, "response": results}));
+		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@pfleger/pn/:id", "error": null, "port": process.env.PORT, "response": results}));
 	});
 });
 
