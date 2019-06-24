@@ -19,22 +19,24 @@ router.get('/:id', function(req, res, next) {
 });
 
 // Add new record to bewohner
-router.post('/test', function(req, res, next) {
-	const newBewohner = {
-		nachname: req.body.nachname,
-		vorname: req.body.vorname,
-		zimmernummer: req.body.zimmernummer,
-		pflegegrad: req.body.pflegegrad,
-		geburtsdatum: req.body.geburtsdatum,
-		geschlecht: req.body.geschlecht
-	}
-	db.query(`INSERT INTO bewohner(nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES('test', 'test', 101, 1, STR_TO_DATE('1-01-2012', '%d-%m-%Y'), 'm')`, function (err, results) {
-		if (err) {
-			throw err
-		} else {
-			res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner", "error": null, "response": "Bewohner successfully inserted"}));
-		}
-	});
+router.post('/test', function(req, res) {
+	// const newBewohner = {
+	// 	nachname: req.body.nachname,
+	// 	vorname: req.body.vorname,
+	// 	zimmernummer: req.body.zimmernummer,
+	// 	pflegegrad: req.body.pflegegrad,
+	// 	geburtsdatum: req.body.geburtsdatum,
+	// 	geschlecht: req.body.geschlecht
+	// }
+	// db.query(`INSERT INTO bewohner(nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES('test', 'test', 101, 1, STR_TO_DATE('1-01-2012', '%d-%m-%Y'), 'm')`, function (err, results) {
+	// 	if (err) {
+	// 		throw err
+	// 	} else {
+	// 		res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner", "error": null, "response": "Bewohner successfully inserted"}));
+	// 	}
+	// });
+
+	res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner/test", "error": null}));
 });
 
 module.exports = router;
