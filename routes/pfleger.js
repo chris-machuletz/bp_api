@@ -20,11 +20,10 @@ router.get('/:id', function(req, res, next) {
 
 // Select single pfleger record by 'Personalnummer'
 router.get('/pn/:id', function(req, res, next) {
-	// db.query(`SELECT * FROM pfleger WHERE persnr = ${req.params.id}`, function (err, results) {
-	// 	if (err) throw err;
-	// 	res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
-	// });
-	res.send(`Sends a single 'pfleger' with persnr of ${req.params.id}`);
+	db.query(`SELECT * FROM pfleger WHERE persnr = ${req.params.id}`, function (err, results) {
+		if (err) throw err;
+		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+	});
 });
 
 
