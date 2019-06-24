@@ -15,19 +15,9 @@
     </header>
 
      <h3 class="mb-4 mt-5">Implementierte Routes</h3>
-     <h5>Bewohnerdaten</h5>
-     <ul>
-        <li><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner">https://api.imkerei-bienenfreund.de/bewohner</a></li>
-        <li><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner/1">https://api.imkerei-bienenfreund.de/bewohner/1</a></li>
-     </ul>
 
-     <h5>Personaldaten</h5>
-     <ul>
-        <li><a target="_blank" href="https://api.imkerei-bienenfreund.de/pfleger">https://api.imkerei-bienenfreund.de/pfleger</a></li>
-        <li><a target="_blank" href="https://api.imkerei-bienenfreund.de/pfleger/1">https://api.imkerei-bienenfreund.de/pfleger/1</a></li>
-     </ul>
-
-     <table class="table table-sm table-bordered">
+     <h5 class="mb-3 mt-4">Bewohnerdaten</h5>
+     <table class="table table-sm table-hover table-bordered">
          <thead>
              <th scope="col">Method</th>
              <th scope="col">URL</th>
@@ -35,21 +25,42 @@
          </thead>
          <tbody>
             <tr>
-                <td><span class="method_get">GET</span></td>
+                <td><span class="post_method method_get">GET</span></td>
                 <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner">/bewohner</a></td>
                 <td>Gibt alle Bewohner zurück</td>
             </tr>
             <tr>
-                <td><span class="method_get">GET</span></td>
+                <td><span class="post_method method_post">POST</span></td>
+                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner/">/bewohner</a></td>
+                <td>Fügt einen neuen Bewohner hinzu<br><i>@params nachname(string), vorname(string), zimmernummer(int), pflegegrad(int), geburtsdatum(string:'YYYY-MM-DD'), geschlecht(string:['m','w','d'])</i></td>
+            </tr>
+            <tr>
+                <td><span class="post_method method_get">GET</span></td>
                 <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner/1">/bewohner/:id</a></td>
                 <td>Gibt Bewohner mit <i>:id = bewohner_id</i> zurück</td>
             </tr>
-            <tr>
-                <td><span class="method_post">POST</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner/">/bewohner</a></td>
-                <td>Fügt einen neuen Bewohner hinzu <i>@params nachname(string), vorname(string), zimmernummer(int), pflegegrad(int), geburtsdatum(string:'YYYY-MM-DD'), geschlecht(string:['m','w','d'])</i></td>
-            </tr>
          </tbody>
      </table>
+
+     <h5 class="mb-3 mt-4">Personaldaten</h5>
+     <table class="table table-sm table-hover table-bordered">
+            <thead>
+                <th scope="col">Method</th>
+                <th scope="col">URL</th>
+                <th scope="col">Beschreibung</th>
+            </thead>
+            <tbody>
+               <tr>
+                   <td><span class="post_method method_get">GET</span></td>
+                   <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/pfleger">/pfleger</a></td>
+                   <td>Gibt alle Pfleger zurück</td>
+               </tr>
+               <tr>
+                   <td><span class="post_method method_get">GET</span></td>
+                   <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/pfleger/1">/pfleger/:id</a></td>
+                   <td>Gibt Pfleger mit <i>:id = pfleger_id</i> zurück</td>
+               </tr>
+            </tbody>
+        </table>
 </body>
 </html>

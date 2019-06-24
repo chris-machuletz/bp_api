@@ -1,15 +1,21 @@
-span.method_get {
-  background: #e4775a;
-  padding: 1px 8px;
+span.post_method {
+  display: inline-block;
+  width: 54px;
   border-radius: 8px;
   color: #FFF;
 }
-span.method_post {
-  background: #7a5ae4;
-  padding: 1px 8px;
-  border-radius: 8px;
-  color: #FFF;
+
+span.method_get { background: #e4775a; }
+span.method_post { background: #7a5ae4; }
+
+td { padding: .3rem .6rem }
+td:first-of-type { text-align: center; }
+
+th:first-of-type {
+  white-space: nowrap;
+  width: 1%;
 }
-td:first-of-type {
-  text-align: center;
+th:nth-of-type(2) {
+  white-space: nowrap;
+  width: 1%;
 }
