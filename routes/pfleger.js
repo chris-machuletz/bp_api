@@ -6,7 +6,7 @@ const db = require('../dbconn');
 router.get('/', function(req, res, next) {
 	db.query('SELECT * FROM pfleger', function (err, results) {
         if (err) throw err;
-        res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+        res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@pfleger/", "error": null, "response": results}));
 	});
 });
 
@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
 	db.query(`SELECT * FROM pfleger WHERE pfleger_id = ${req.params.id}`, function (err, results) {
 		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@pfleger/:id", "error": null, "response": results}));
 	});
 });
 

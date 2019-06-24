@@ -6,7 +6,7 @@ const db = require('../dbconn');
 router.get('/', function(req, res, next) {
 	db.query('SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner', function (err, results) {
         if (err) throw err;
-        res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+        res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner/", "error": null, "response": results}));
 	});
 });
 
@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
 	db.query(`SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner WHERE bewohner_id = ${req.params.id}`, function (err, results) {
 		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "error": null, "response": results}));
+		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner/:id", "error": null, "response": results}));
 	});
 });
 
