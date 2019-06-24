@@ -17,7 +17,7 @@ exports.validate = (method) => {
 
 const {validationResult} = require('express-validator/check');
 
-exports.createUser = async (req, res, next) => {
+exports.createBewohner = async (req, res, next) => {
     try {
         const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
 
