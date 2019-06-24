@@ -33,7 +33,7 @@ router.post('/test', function(req, res) {
 		if (err) {
 			throw err
 		} else {
-			res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner", "error": null, "response": results}));
+			res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner", "error": null, "req.body.nachname": req.body.nachname}));
 		}
 	});
 
