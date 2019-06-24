@@ -1,8 +1,15 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+span.method_get {
+  background: #e4775a;
+  padding: 1px 8px;
+  border-radius: 8px;
+  color: #FFF;
 }
-
-a {
-  color: #00B7FF;
+span.method_post {
+  background: #7a5ae4;
+  padding: 1px 8px;
+  border-radius: 8px;
+  color: #FFF;
+}
+td:first-of-type {
+  text-align: center;
 }

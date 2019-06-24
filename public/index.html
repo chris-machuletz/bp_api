@@ -25,5 +25,30 @@
         <li><a target="_blank" href="https://api.imkerei-bienenfreund.de/pfleger">https://api.imkerei-bienenfreund.de/pfleger</a></li>
         <li><a target="_blank" href="https://api.imkerei-bienenfreund.de/pfleger/1">https://api.imkerei-bienenfreund.de/pfleger/1</a></li>
      </ul>
+
+     <table class="table table-sm table-bordered">
+         <thead>
+             <th scope="col">Method</th>
+             <th scope="col">URL</th>
+             <th scope="col">Beschreibung</th>
+         </thead>
+         <tbody>
+            <tr>
+                <td><span class="method_get">GET</span></td>
+                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner">/bewohner</a></td>
+                <td>Gibt alle Bewohner zurück</td>
+            </tr>
+            <tr>
+                <td><span class="method_get">GET</span></td>
+                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner/1">/bewohner/:id</a></td>
+                <td>Gibt Bewohner mit <i>:id = bewohner_id</i> zurück</td>
+            </tr>
+            <tr>
+                <td><span class="method_post">POST</span></td>
+                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner/">/bewohner</a></td>
+                <td>Fügt einen neuen Bewohner hinzu <i>@params nachname(string), vorname(string), zimmernummer(int), pflegegrad(int), geburtsdatum(string:'YYYY-MM-DD'), geschlecht(string:['m','w','d'])</i></td>
+            </tr>
+         </tbody>
+     </table>
 </body>
 </html>
