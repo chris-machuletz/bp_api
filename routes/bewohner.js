@@ -33,11 +33,11 @@ router.post('/test', function(req, res) {
 		geburtsdatum: req.body.geburtsdatum,
 		geschlecht: req.body.geschlecht
 	}
-	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES ('${newBewohner.nachname}', '${newBewohner.vorname}', ${newBewohner.zimmernummer}, ${newBewohner.pflegegrad}, STR_TO_DATE('${newBewohner.geburtsdatum}', '%Y-%m-%d'), '${newBewohner.geschlecht}')`, function (err, results) {
+	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES ('${req.body.nachname}', '${req.body.vorname}', ${parseInt(req.body.zimmernummer)}, ${parseInt(req.body.pflegegrad)}, STR_TO_DATE('10-11-2012', '%d-%m-%Y'), '${req.body.geschlecht}')`, function (err, results) {
 		if (err) {
 			throw err
 		} else {
-			res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner", "error": null, "data": {"nachname": req.body.nachname, "vorname": req.body.vorname, "zimmernummer": req.body.zimmernummer, "pflegegrad": req.body.pflegegrad, "geburtsdatum": req.body.geburtsdatum, "geschlecht": req.body.geschlecht}}));
+			res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner", "error": null, "req.body.nachname": req.body.geburtsdatum}));
 		}
 	});
 >>>>>>> parent of f30d397... updated post@/bewohner
