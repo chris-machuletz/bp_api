@@ -29,7 +29,7 @@ router.post('/test', function(req, res) {
 	// 	geburtsdatum: req.body.geburtsdatum,
 	// 	geschlecht: req.body.geschlecht
 	// }
-	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES ('test', 'test', 103, 1, STR_TO_DATE('10-11-2012', '%d-%m-%Y'), 'm')`, function (err, results) {
+	db.query(`INSERT INTO bewohner (nachname, vorname, zimmernummer, pflegegrad, geburtsdatum, geschlecht) VALUES ('${req.body.nachname}', '${req.body.vorname}', 103, 1, STR_TO_DATE('10-11-2012', '%d-%m-%Y'), 'm')`, function (err, results) {
 		if (err) {
 			throw err
 		} else {
