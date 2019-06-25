@@ -23,6 +23,7 @@ app.use(express.json({ limit: '1mb' }));
 
 app.use('/bewohner', require('./routes/bewohner'));
 app.use('/pfleger', require('./routes/pfleger'));
+app.use('/kontaktperson', require('./routes/kontaktperson'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
