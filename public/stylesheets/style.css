@@ -17,5 +17,5 @@ th:first-of-type {
 }
 th:nth-of-type(2) {
   white-space: nowrap;
-  width: 1%;
+  /*width: 1%;*/
 }
