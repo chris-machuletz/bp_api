@@ -9,18 +9,30 @@
 </head>
 <body>
     <form action="/bewohner/" method="post">
-        <label for="vorname">Vorname</label>
-        <input type="text" name="vorname" id="vorname">
-        <label for="nachname">Nachname</label>
-        <input type="text" name="nachname" id="nachname">
-        <label for="zimmernummer">Zimmernummer</label>
-        <input type="number" name="zimmernummer" id="zimmernummer">
-        <label for="pflegegrad">Pflegegrad</label>
-        <input type="number" name="pflegegrad" id="pflegegrad">
-        <label for="geburtsdatum">Geburtsdatum</label>
-        <input type="date" name="geburtsdatum" id="geburtsdatum">
-        <label for="geschlecht">Geschlecht</label>
-        <input type="text" name="geschlecht" id="geschlecht">
+        <div class="form-group">
+            <label for="vorname">Vorname</label>
+            <input type="text" class="form-control" name="vorname" id="vorname">
+        </div>
+        <div class="form-group">
+            <label for="nachname">Nachname</label>
+            <input type="text" class="form-control" name="nachname" id="nachname">
+        </div>
+        <div class="form-group">
+            <label for="zimmernummer">Zimmernummer</label>
+            <input type="number" class="form-control" name="zimmernummer" id="zimmernummer">
+        </div>
+        <div class="form-group">
+            <label for="pflegegrad">Pflegegrad</label>
+            <input type="number" class="form-control" name="pflegegrad" id="pflegegrad">
+        </div>
+        <div class="form-group">
+            <label for="geburtsdatum">Geburtsdatum</label>
+            <input type="date" class="form-control" name="geburtsdatum" id="geburtsdatum">
+        </div>
+        <div class="form-group">
+            <label for="geschlecht">Geschlecht</label>
+            <input type="text" class="form-control" name="geschlecht" id="geschlecht">
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </body>
