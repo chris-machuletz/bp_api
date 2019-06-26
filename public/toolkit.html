@@ -27,6 +27,9 @@
     <input type="button" value="Datenpaket absenden" onclick="sendData()" id="btn_send_data" disabled>
 
     <script>
+        let url = "";
+        let options = "";
+
         function updatePreset() {
             let preset = document.getElementById("urls").value;
             switch (preset) {
@@ -50,9 +53,9 @@
             console.log(radio);
 
             const path = document.getElementById("urls").value;
-            const url = "https://dev.imkerei-bienenfreund.de" + path;
+            url = "https://dev.imkerei-bienenfreund.de" + path;
             const data = JSON.parse(document.getElementById("request_data").value);
-            const options = {
+            options = {
                 headers: {
                     "content-type": "application/json; charset=UTF-8"
                 },
@@ -62,7 +65,7 @@
             console.log(data);
             console.log(options);
 
-            document.getElementById("data_to_send").innerHTML = data;
+            document.getElementById("data_to_send").innerHTML = JSON.stringify(data);
             document.getElementById("btn_send_data").disabled = false;
         }
 
