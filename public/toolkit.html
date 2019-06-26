@@ -52,7 +52,7 @@
 
             const path = document.getElementById("urls").value;
             const url = "https://dev.imkerei-bienenfreund.de" + path;
-            const data = json.parse(document.getElementById("request_data").value);
+            const data = JSON.parse(document.getElementById("request_data").value);
             const options = {
                 headers: {
                     "content-type": "application/json; charset=UTF-8"
