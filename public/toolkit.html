@@ -32,11 +32,11 @@
             switch (preset) {
                 case "/bewohner":
                     document.getElementById("method_post").checked = true;
-                    document.getElementById("request_data").value = `{'nachname': 'Mustermann', 'vorname': 'Max', 'zimmernummer': 101, 'pflegegrad': 1, 'geburtsdatum': '1950-05-01', 'geschlecht': 'm'}`;
+                    document.getElementById("request_data").value = "{'nachname': 'Mustermann', 'vorname': 'Max', 'zimmernummer': 101, 'pflegegrad': 1, 'geburtsdatum': '1950-05-01', 'geschlecht': 'm'}";
                     break;
                 case "/kontaktperson/:id":
                     document.getElementById("method_put").checked = true;
-                    document.getElementById("request_data").value = `{'nachname': 'Mustermann', 'vorname': 'Max', 'telefonnummer': '17123456789'}`;
+                    document.getElementById("request_data").value = "{'nachname': 'Mustermann', 'vorname': 'Max', 'telefonnummer': '17123456789'}";
                     break;
                 case "andere":
                     document.getElementById("request_data").value = "";
