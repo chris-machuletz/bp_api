@@ -32,7 +32,7 @@ router.put('/:id', function(req, res, next) {
         telefon = req.body.telefon
     }
     db.query(`UPDATE kontaktperson\
-    SET nachname=${updatedKP.nachname}, vorname=${updatedKP.vorname}, telefon=${updatedKP.vorname}\
+    SET nachname="${updatedKP.nachname}", vorname="${updatedKP.vorname}", telefon="${updatedKP.vorname}"\
     WHERE kontaktperson_id=${req.params.id}`
     , function (err, results) {
         if (err) throw err;
