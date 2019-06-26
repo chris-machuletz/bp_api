@@ -25,7 +25,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 // Update record from kontaktperson where :id = kontaktperson_id
-router.put('update/:id', function(req, res, next) {
+router.post('update/:id', function(req, res, next) {
     // const updatedKP = {
     //     nachname = req.body.nachname,
     //     vorname = req.body.vorname,

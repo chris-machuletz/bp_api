@@ -12,7 +12,7 @@
         <select name="urls" id="urls" onChange="updatePreset()">
             <option value="" disabled selected>Bitte auswählen...</option>
             <option value="/bewohner">/bewohner</option>
-            <option value="/kontaktperson/1">/kontaktperson/1</option>
+            <option value="/kontaktperson/update/1">/kontaktperson/update/1</option>
             <option value="andere">andere URL...</option>
         </select>
         <label for="method">Method</label>
@@ -37,8 +37,8 @@
                     document.getElementById("method_post").checked = true;
                     document.getElementById("request_data").value = '{"nachname": "Mustermann", "vorname": "Max", "zimmernummer": 101, "pflegegrad": 1, "geburtsdatum": "1950-05-01", "geschlecht": "m"}';
                     break;
-                case "/kontaktperson/1":
-                    document.getElementById("method_put").checked = true;
+                case "/kontaktperson/update/1":
+                    document.getElementById("method_post").checked = true;
                     document.getElementById("request_data").value = '{"nachname": "Mustermann", "vorname": "Max", "telefonnummer": "17123456789"}';
                     break;
                 case "andere":
