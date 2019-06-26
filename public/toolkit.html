@@ -5,29 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Toolkit for POST and PUT requests</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
+<body class="container">
+    <h1 class="mt-5">POST request toolkit</h1>
     <form action="" id="dataform">
-        <label for="route">Template: </label>
-        <select name="urls" id="urls" onChange="updatePreset()">
-            <option value="" disabled selected>Bitte auswählen...</option>
-            <option value="/bewohner">Bewohner anlegen</option>
-            <option value="/kontaktperson/update/:id">Kontaktperson ändern</option>
-            <option value="/kontaktperson/new/:id">Neue Kontaktperson für Bewohner erstellen</option>
-            <option value="andere">andere URL...</option>
-        </select>
-        <label for="link">URL</label>
-        <input type="text" name="link" id="link-input">
-        <label for="method">Method</label>
-        <input type="radio" name="method" value="POST" id="method_post"> POST
-        <input type="radio" name="method" value="PUT" id="method_put"> PUT (not supported)<br>
-        <textarea cols="50" rows="10" name="daten" id="request_data" form="dataform">Enter JSON...</textarea><br>
-        <input type="button" value="Datenpaket generieren" onclick="generateData()">
+        <div class="form-group">
+            <label for="route">Template: </label>
+            <select name="urls" id="urls" onChange="updatePreset()">
+                <option value="" disabled selected>Bitte auswählen...</option>
+                <option value="/bewohner/new">Bewohner anlegen</option>
+                <option value="/kontaktperson/update/:id">Kontaktperson ändern</option>
+                <option value="/kontaktperson/new/:id">Neue Kontaktperson für Bewohner erstellen</option>
+                <option value="andere">andere URL...</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="link">URL</label>
+            <input type="text" name="link" id="link-input">
+        </div>
+        <div class="form-group">
+            <label for="method">Method</label>
+            <input type="radio" name="method" value="POST" id="method_post"> POST
+            <input type="radio" name="method" value="PUT" id="method_put"> PUT (not supported)<br>
+        </div>
+        <div class="form-group">
+            <textarea cols="50" rows="10" name="daten" id="request_data" form="dataform">Enter JSON...</textarea><br>
+         </div>
+        <input type="button" class="btn btn-primary"  value="Datenpaket generieren" onclick="generateData()">
     </form>
 
-    <div id="data_to_send"></div>
+    <div id="data_to_send pt-5 pb-5"></div>
 
-    <input type="button" value="Datenpaket absenden" onclick="sendData()" id="btn_send_data" disabled>
+    <input type="button" class="btn btn-primary" value="Datenpaket absenden" onclick="sendData()" id="btn_send_data" disabled>
 
     <script>
         let url = "";
@@ -36,8 +46,8 @@
         function updatePreset() {
             let preset = document.getElementById("urls").value;
             switch (preset) {
-                case "/bewohner":
-                    document.getElementById("link-input").value = "/bewohner"
+                case "/bewohner/new":
+                    document.getElementById("link-input").value = "/bewohner/new"
                     document.getElementById("method_post").checked = true;
                     document.getElementById("request_data").value = '{"nachname": "Mustermann", "vorname": "Max", "zimmernummer": 101, "pflegegrad": 1, "geburtsdatum": "1950-05-01", "geschlecht": "m"}';
                     break;
