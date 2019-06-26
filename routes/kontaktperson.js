@@ -31,7 +31,7 @@ router.post('/update/:id', function(req, res) {
         vorname: req.body.vorname,
         telefon: req.body.telefon
     }
-    db.query(`UPDATE kontaktperson SET nachname="${updateKP.nachname}", vorname="max", telefon="00000000" WHERE kontaktperson_id=1`, function (err, results) {
+    db.query(`UPDATE kontaktperson SET nachname="${updateKP.nachname}", vorname="${updateKP.vorname}", telefon="${updateKP.telefon}" WHERE kontaktperson_id=${req.params.id}`, function (err, results) {
         if (err) {
             throw err;
         } else {
