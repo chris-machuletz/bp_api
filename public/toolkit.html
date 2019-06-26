@@ -10,16 +10,21 @@
     <form action="">
         <label for="route">Datenpaket für:</label>
         <select name="urls" id="urls" onChange="updatePreset()">
+            <option value="" disabled selected>Bitte auswählen...</option>
             <option value="/bewohner">/bewohner</option>
             <option value="/kontaktperson/:id">/kontaktperson/:id</option>
             <option value="andere">andere URL...</option>
         </select>
-        <label for="method"></label>
+        <label for="method">Method</label>
         <input type="radio" name="method" value="post" id="method_post"> POST
-        <input type="radio" name="method" value="post" id="method_put"> PUT<br>
-        <input type="text" name="daten" id="request_data">
+        <input type="radio" name="method" value="put" id="method_put"> PUT<br>
+        <input type="text" name="daten" id="request_data"><br>
         <input type="button" value="Datenpaket generieren" action="generateData()">
     </form>
+
+    <div id="data_to_send"></div>
+
+    <input type="button" value="Datenpaket absenden" action="sendData()" id="btn_send_data" disabled>
 
     <script>
         function updatePreset() {
@@ -33,13 +38,33 @@
                     document.getElementById("method_put").checked = true;
                     document.getElementById("request_data").value = "put request data";
                     break;
+                case "andere":
+                    document.getElementById("request_data").value = "";
+                    break;
             
                 default:
                     break;
             }
         }
         function generateData() {
+            let radio = document.querySelector('input[name="genderS"]:checked').value;
+            console.log(radio);
 
+            const path = document.getElementById("urls").value;
+            const url = "https://dev.imkerei-bienenfreund.de" + path;
+            const data = json.parse(document.getElementById("request_data").value);
+            const options = {
+                headers: {
+                    "content-type": "application/json; charset=UTF-8"
+                },
+                body: data,
+                method: document.querySelector('input[name="method"]:checked').value
+            };
+            console.log(data);
+            console.log(options);
+
+            document.getElementById("data_to_send").innerHTML = "data to send";
+            document.getElementById("btn_send_data").disabled = false;
         }
     </script>
     
