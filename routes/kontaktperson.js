@@ -30,7 +30,7 @@ router.post('/update/:id', function(req, res) {
         nachname = req.body.nachname,
         vorname = req.body.vorname,
         telefon = req.body.telefon
-    }
+    };
     db.query(`UPDATE kontaktperson SET nachname="${updateKontaktpers.nachname}", vorname="max", telefon="00000000" WHERE kontaktperson_id=1`, function (err, results) {
         if (err) {
             throw err;
