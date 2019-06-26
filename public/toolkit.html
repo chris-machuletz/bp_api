@@ -13,6 +13,7 @@
             <option value="" disabled selected>Bitte auswählen...</option>
             <option value="/bewohner">/bewohner</option>
             <option value="/kontaktperson/update/1">/kontaktperson/update/1</option>
+            <option value="/kontaktperson/new/1">/kontaktperson/new/1</option>
             <option value="andere">andere URL...</option>
         </select>
         <label for="method">Method</label>
@@ -40,6 +41,10 @@
                 case "/kontaktperson/update/1":
                     document.getElementById("method_post").checked = true;
                     document.getElementById("request_data").value = '{"nachname": "Mustermann", "vorname": "Max", "telefon": "17123456789"}';
+                    break;
+                case "/kontaktperson/new/1":
+                    document.getElementById("method_post").checked = true;
+                    document.getElementById("request_data").value = '{"kp_bezeichnung_id": "kp_bezeichnung_id", "nachname": "Mustermann", "vorname": "Max", "telefon": "17123456789"}';
                     break;
                 case "andere":
                     document.getElementById("request_data").value = "";

@@ -28,7 +28,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/new/:id', function(req, res) {
 	
 	const newKP = {
-        bewohnerId: req.body.bewohner_id,
+        bewohnerId: req.params.bewohner_id,
         kp_bezeichnung_id: req.body.kp_bezeichnung_id,
         nachname: req.body.nachname,
 		vorname: req.body.vorname,
