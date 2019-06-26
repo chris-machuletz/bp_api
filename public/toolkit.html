@@ -8,17 +8,19 @@
 </head>
 <body>
     <form action="" id="dataform">
-        <label for="route">Datenpaket für:</label>
+        <label for="route">Template: </label>
         <select name="urls" id="urls" onChange="updatePreset()">
             <option value="" disabled selected>Bitte auswählen...</option>
-            <option value="/bewohner">/bewohner</option>
-            <option value="/kontaktperson/update/1">/kontaktperson/update/1</option>
-            <option value="/kontaktperson/new/1">/kontaktperson/new/1</option>
+            <option value="/bewohner">Bewohner anlegen</option>
+            <option value="/kontaktperson/update/:id">Kontaktperson ändern</option>
+            <option value="/kontaktperson/new/:id">Neue Kontaktperson für Bewohner erstellen</option>
             <option value="andere">andere URL...</option>
         </select>
+        <label for="link">URL</label>
+        <input type="text" name="link" id="link-input">
         <label for="method">Method</label>
         <input type="radio" name="method" value="POST" id="method_post"> POST
-        <input type="radio" name="method" value="PUT" id="method_put"> PUT<br>
+        <input type="radio" name="method" value="PUT" id="method_put"> PUT (not supported)<br>
         <textarea cols="50" rows="10" name="daten" id="request_data" form="dataform">Enter JSON...</textarea><br>
         <input type="button" value="Datenpaket generieren" onclick="generateData()">
     </form>
@@ -35,19 +37,22 @@
             let preset = document.getElementById("urls").value;
             switch (preset) {
                 case "/bewohner":
+                    document.getElementById("link-input").value = "/bewohner"
                     document.getElementById("method_post").checked = true;
                     document.getElementById("request_data").value = '{"nachname": "Mustermann", "vorname": "Max", "zimmernummer": 101, "pflegegrad": 1, "geburtsdatum": "1950-05-01", "geschlecht": "m"}';
                     break;
-                case "/kontaktperson/update/1":
+                case "/kontaktperson/update/:id":
+                    document.getElementById("link-input").value = "/kontaktperson/update/1"
                     document.getElementById("method_post").checked = true;
                     document.getElementById("request_data").value = '{"nachname": "Mustermann", "vorname": "Max", "telefon": "17123456789"}';
                     break;
-                case "/kontaktperson/new/1":
+                case "/kontaktperson/new/:id":
+                    document.getElementById("link-input").value = "/kontaktperson/new/1"
                     document.getElementById("method_post").checked = true;
                     document.getElementById("request_data").value = '{"kp_bezeichnung_id": 4, "nachname": "Mustermann", "vorname": "Max", "telefon": "17123456789"}';
                     break;
                 case "andere":
-                    document.getElementById("request_data").value = "";
+                    document.getElementById("request_data").value = 'Enter JSON...';
                     break;
                 default:
                     break;
@@ -57,7 +62,7 @@
             let radio = document.querySelector('input[name="method"]:checked').value;
             console.log(radio);
 
-            const path = document.getElementById("urls").value;
+            const path = document.getElementById("link-input").value;
             url = "https://dev.imkerei-bienenfreund.de" + path;
             const data = JSON.parse(document.getElementById("request_data").value);
             options = {
