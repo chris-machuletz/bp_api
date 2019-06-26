@@ -19,7 +19,7 @@
         <label for="method">Method</label>
         <input type="radio" name="method" value="POST" id="method_post"> POST
         <input type="radio" name="method" value="PUT" id="method_put"> PUT<br>
-        <input type="text" name="daten" id="request_data"><br>
+        <input type="textarea" cols="50" rows="10" name="daten" id="request_data"><br>
         <input type="button" value="Datenpaket generieren" onclick="generateData()">
     </form>
 
@@ -44,7 +44,7 @@
                     break;
                 case "/kontaktperson/new/1":
                     document.getElementById("method_post").checked = true;
-                    document.getElementById("request_data").value = '{"kp_bezeichnung_id": "kp_bezeichnung_id", "nachname": "Mustermann", "vorname": "Max", "telefon": "17123456789"}';
+                    document.getElementById("request_data").value = '{"kp_bezeichnung_id": 4, "nachname": "Mustermann", "vorname": "Max", "telefon": "17123456789"}';
                     break;
                 case "andere":
                     document.getElementById("request_data").value = "";
