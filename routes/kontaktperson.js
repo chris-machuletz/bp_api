@@ -34,7 +34,7 @@ router.post('/new/:id', function(req, res) {
 		vorname: req.body.vorname,
 		telefon: req.body.telefon
 	}
-	db.query(`INSERT INTO kontaktperson (bewohner_id, kp_bezeichnung_id, nachname, vorname, telefon) VALUES ('${newKP.bewohner_id}', '${newKP.kp_bezeichnung_id}', ${newKP.nachname}, ${newKP.vorname}, '${newKP.telefon}')`, function (err, results) {
+	db.query(`INSERT INTO kontaktperson (bewohner_id, kp_bezeichnung_id, nachname, vorname, telefon) VALUES ('${newKP.bewohner_id}', '${newKP.kp_bezeichnung_id}', '${newKP.nachname}', '${newKP.vorname}', '${newKP.telefon}')`, function (err, results) {
 		if (err) {
 			throw err
 		} else {
