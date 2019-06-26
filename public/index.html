@@ -33,8 +33,8 @@
                 <td><span class="post_method method_post">POST</span></td>
                 <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner/">/bewohner</a></td>
                 <td>Fügt einen neuen Bewohner hinzu<br>
-                    <i>@params nachname(string), vorname(string), zimmernummer(int), pflegegrad(int), geburtsdatum(string:'YYYY-MM-DD'), geschlecht(string:['m','w','d'])</i><br>
-                    <span class="bg-danger text-white p-1 pl-3 pr-3 mt-1 d-inline-block rounded">Input wird noch nicht validiert!</span>
+                    <i>@params nachname(string), vorname(string), zimmernummer(int), pflegegrad(int), geburtsdatum(string:'YYYY-MM-DD'), geschlecht(string:['m','w','d'])<br>
+                    <span class="bg-danger text-white p-1 pl-3 pr-3 mt-1 d-inline-block rounded">Input wird noch nicht validiert!</span></i>
                 </td>
             </tr>
             <tr>
@@ -89,6 +89,27 @@
                    <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/kontaktperson/1">/kontaktperson/:id</a></td>
                    <td>Gibt alle Kontaktpersonen des Bewohners mit <i>[:id = bewohner_id]</i> zurück</td>
                </tr>
+               <tr>
+                    <td><span class="post_method method_post">POST</span></td>
+                    <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/kontaktperson/new/1">/kontaktperson/new/:id</a></td>
+                    <td>Legt neue Kontaktperson für <i>[:id = bewohner_id]</i> an<br>
+                    <i>@params bewohner_id(int), kp_bezeichnung_id(int), nachname(string), vorname(string), telefon(string)<br>
+                    <span class="bg-danger text-white p-1 pl-3 pr-3 mt-1 d-inline-block rounded">Input wird noch nicht validiert!</span>
+                    </td>
+                </tr>
+               <tr>
+                    <td><span class="post_method method_post">POST</span></td>
+                    <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/kontaktperson/update/1">/kontaktperson/update/:id</a></td>
+                    <td>Ändert Kontaktperson mit <i>[:id = kontaktperson_id]</i><br>
+                    <i>@params nachname(string), vorname(string), telefon(string)<br>
+                    <span class="bg-danger text-white p-1 pl-3 pr-3 mt-1 d-inline-block rounded">Input wird noch nicht validiert!</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="post_method method_get">GET</span></td>
+                    <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/kontaktperson/delete/8">/kontaktperson/delete/:id</a></td>
+                    <td>Löscht Kontaktpersonen mit <i>[:id = kontaktperson_id]</i></td>
+                 </tr>
             </tbody>
         </table>
 

@@ -24,8 +24,27 @@ router.get('/:id', function(req, res, next) {
 	});
 });
 
+// Add new record to kontaktperson
+router.post('/new/:id', function(req, res) {
+	
+	const newKP = {
+        bewohnerId: req.body.bewohner_id,
+        kp_bezeichnung_id: req.body.kp_bezeichnung_id,
+        nachname: req.body.nachname,
+		vorname: req.body.vorname,
+		telefon: req.body.telefon
+	}
+	db.query(`INSERT INTO kontaktperson (bewohner_id, kp_bezeichnung_id, nachname, vorname, telefon) VALUES ('${newKP.bewohner_id}', '${newKP.kp_bezeichnung_id}', ${newKP.nachname}, ${newKP.vorname}, '${newKP.telefon}')`, function (err, results) {
+		if (err) {
+			throw err
+		} else {
+			res.type('application/json').send(JSON.stringify({"status": 200, "action": "post@bewohner", "error": null, "data": {"bewohner_id": req.body.bewohner_id, "kp_bezeichnung_id": req.body.kp_bezeichnung_id, "nachname": req.body.nachname, "vorname": req.body.vorname, "telefon": req.body.telefon}}));
+		}
+	});
+});
+
 // Update record from kontaktperson where :id = kontaktperson_id
-router.put('/update/:id', function(req, res) {
+router.post('/update/:id', function(req, res) {
     const updateKP = {
         nachname: req.body.nachname,
         vorname: req.body.vorname,
