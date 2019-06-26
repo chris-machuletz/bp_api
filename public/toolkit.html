@@ -7,7 +7,7 @@
     <title>Toolkit for POST and PUT requests</title>
 </head>
 <body>
-    <form action="">
+    <form action="" id="dataform">
         <label for="route">Datenpaket für:</label>
         <select name="urls" id="urls" onChange="updatePreset()">
             <option value="" disabled selected>Bitte auswählen...</option>
@@ -19,7 +19,7 @@
         <label for="method">Method</label>
         <input type="radio" name="method" value="POST" id="method_post"> POST
         <input type="radio" name="method" value="PUT" id="method_put"> PUT<br>
-        <input type="textarea" cols="50" rows="10" name="daten" id="request_data"><br>
+        <textarea cols="50" rows="10" name="daten" id="request_data" form="dataform"><br>
         <input type="button" value="Datenpaket generieren" onclick="generateData()">
     </form>
 
