@@ -24,4 +24,20 @@ router.get('/:id', function(req, res, next) {
 	});
 });
 
+// Update record from kontaktperson where :id = kontaktperson_id
+router.put('/:id', function(req, res, next) {
+    const updatedKP = {
+        nachname = req.body.nachname,
+        vorname = req.body.vorname,
+        telefon = req.body.telefon
+    }
+    db.query(`UPDATE kontaktperson\
+    SET nachname=${updatedKP.nachname}, vorname=${updatedKP.vorname}, telefon=${updatedKP.vorname}\
+    WHERE kontaktperson_id=${req.params.id}`
+    , function (err, results) {
+        if (err) throw err;
+        res.type('application/json').send(JSON.stringify({"status": 200, "action": "put@kontaktperson/:id", "error": null, "response": results}));
+	});
+});
+
 module.exports = router;
