@@ -33,7 +33,7 @@ router.put('update/:id', function(req, res, next) {
     // }
     db.query(`UPDATE kontaktperson SET nachname="mustermann", vorname="max", telefon="00000000" WHERE kontaktperson_id=1`, function (err, results) {
         if (err) throw err;
-        res.type('application/json').send(JSON.stringify({"status": 200, "action": "put@kontaktperson/:id", "error": null, "response": results}));
+        res.type('application/json').send(JSON.stringify({"status": 200, "action": "put@kontaktperson/update/:id", "error": null, "response": results}));
 	});
 });
 
@@ -41,7 +41,7 @@ router.put('update/:id', function(req, res, next) {
 router.delete('delete/:id', function(req, res, next) {
     db.query(`DELETE FROM kontaktperson WHERE kontaktperson_id=${req.params.id}`, function (err, results) {
         if (err) throw err;
-        res.type('application/json').send(JSON.stringify({"status": 200, "action": "put@kontaktperson/:id", "error": null, "response": results}));
+        res.type('application/json').send(JSON.stringify({"status": 200, "action": "delete@kontaktperson/delete/:id", "error": null, "response": results}));
 	});
 });
 
