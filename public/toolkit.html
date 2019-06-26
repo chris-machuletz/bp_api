@@ -19,12 +19,12 @@
         <input type="radio" name="method" value="post" id="method_post"> POST
         <input type="radio" name="method" value="put" id="method_put"> PUT<br>
         <input type="text" name="daten" id="request_data"><br>
-        <input type="button" value="Datenpaket generieren" action="generateData()">
+        <input type="button" value="Datenpaket generieren" onclick="generateData()">
     </form>
 
     <div id="data_to_send"></div>
 
-    <input type="button" value="Datenpaket absenden" action="sendData()" id="btn_send_data" disabled>
+    <input type="button" value="Datenpaket absenden" onclick="sendData()" id="btn_send_data" disabled>
 
     <script>
         function updatePreset() {
