@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Toolkit for POST and PUT requests</title>
+</head>
+<body>
+    <form action="">
+        <label for="route">Datenpaket für:</label>
+        <select name="urls" id="urls" onChange="updatePreset()">
+            <option value="/bewohner">/bewohner</option>
+            <option value="/kontaktperson/:id">/kontaktperson/:id</option>
+            <option value="andere">andere URL...</option>
+        </select>
+        <label for="method"></label>
+        <input type="radio" name="method" value="post" id="method_post"> POST
+        <input type="radio" name="method" value="post" id="method_put"> PUT<br>
+        <input type="text" name="daten" id="request_data">
+        <input type="button" value="Datenpaket generieren" action="generateData()">
+    </form>
+
+    <script>
+        function updatePreset() {
+            let preset = document.getElementById("urls").value;
+            switch (preset) {
+                case "/bewohner":
+                    document.getElementById("method_post").checked = true;
+                    document.getElementById("request_data").value = "post request data";
+                    break;
+                case "/kontaktperson/:id":
+                    document.getElementById("method_put").checked = true;
+                    document.getElementById("request_data").value = "put request data";
+                    break;
+            
+                default:
+                    break;
+            }
+        }
+        function generateData() {
+
+        }
+    </script>
+    
+</body>
+</html>
