@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="stylesheets/style.css">
     <title>API auf imkerei-bienenfreund.de</title>
 </head>
-<body class="container">
+<body class="container mb-5">
     <header class="mb-4 mt-5 pb-4 border-bottom">
         <h1 class="mb-2">API für Alexa-Skill und Web-App</h1> 
         <p class="lead">Im Rahmen des Bachelor-Projekts 2019 im Fachbereich DM der Hochschule Fulda</p>
@@ -32,7 +32,10 @@
             <tr>
                 <td><span class="post_method method_post">POST</span></td>
                 <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner/">/bewohner</a></td>
-                <td>Fügt einen neuen Bewohner hinzu<br><i>@params nachname(string), vorname(string), zimmernummer(int), pflegegrad(int), geburtsdatum(string:'YYYY-MM-DD'), geschlecht(string:['m','w','d'])</i></td>
+                <td>Fügt einen neuen Bewohner hinzu<br>
+                    <i>@params nachname(string), vorname(string), zimmernummer(int), pflegegrad(int), geburtsdatum(string:'YYYY-MM-DD'), geschlecht(string:['m','w','d'])</i><br>
+                    <span class="bg-danger text-white p-1 pl-3 pr-3 mt-1 d-inline-block rounded">Input wird noch nicht validiert!</span>
+                </td>
             </tr>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
@@ -88,7 +91,7 @@
                </tr>
             </tbody>
         </table>
-        
+
         <h5 class="mb-3 pt-4 mt-5 border-top">Links</h5>
         <a href="https://api.imkerei-bienenfreund.de/form.html" target="_blank">POST request test on /bewohner</a><br>
         <a href="https://dev.imkerei-bienenfreund.de/" target="_blank">dev.imkerei-bienenfreund.de</a>
