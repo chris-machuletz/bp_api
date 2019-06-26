@@ -38,7 +38,7 @@ router.put('/update/:id', function(req, res, next) {
 });
 
 // Delete record from kontaktperson where :id = kontaktperson_id
-router.get('/delete/:id', function(req, res, next) {
+router.delete('/delete/:id', function(req, res, next) {
     db.query(`DELETE FROM kontaktperson WHERE kontaktperson_id=${req.params.id}`, function (err, results) {
         if (err) throw err;
         res.type('application/json').send(JSON.stringify({"status": 200, "action": "delete@kontaktperson/delete/:id", "error": null, "response": results}));
