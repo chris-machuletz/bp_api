@@ -59,7 +59,7 @@
                 headers: {
                     "content-type": "application/json; charset=UTF-8"
                 },
-                body: data,
+                body: JSON.stringify(data),
                 method: document.querySelector('input[name="method"]:checked').value
             };
             console.log(data);
