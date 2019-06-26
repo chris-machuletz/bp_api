@@ -26,12 +26,12 @@ router.get('/:id', function(req, res, next) {
 
 // Update record from kontaktperson where :id = kontaktperson_id
 router.post('/update/:id', function(req, res) {
-    // const updateKontaktpers = {
-    //     nachname = req.body.nachname,
-    //     vorname = req.body.vorname,
-    //     telefon = req.body.telefon
-    // }
-    db.query(`UPDATE kontaktperson SET nachname="${updateKontaktpers.nachname}", vorname="max", telefon="00000000" WHERE kontaktperson_id=1`, function (err, results) {
+    const updateKP = {
+        nachname: req.body.nachname,
+        vorname: req.body.vorname,
+        telefon: req.body.telefon
+    }
+    db.query(`UPDATE kontaktperson SET nachname="${updateKP.nachname}", vorname="max", telefon="00000000" WHERE kontaktperson_id=1`, function (err, results) {
         if (err) {
             throw err;
         } else {
