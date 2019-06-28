@@ -48,7 +48,7 @@ router.post('/new', function(req, res) {
 // Update record from user where :username = username
 router.post('/update/:username', function(req, res) {
     const updateUser = {
-        password: req.user.password,
+        password: req.body.password,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email || NULL
