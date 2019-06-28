@@ -4,7 +4,7 @@ const db = require('../dbconn');
 
 // Select all records from user
 router.get('/', function(req, res, next) {
-	db.query('SELECT * FROM user', function (err, results) {
+	db.query('SELECT * FROM users', function (err, results) {
         if (err) throw err;
         res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@user/", "error": null, "response": results}));
 	});
@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
 
 // Select single user record by 'username'
 router.get('/:username', function(req, res, next) {
-	db.query(`SELECT * FROM user WHERE username = '${req.params.username}'`, function (err, results) {
+	db.query(`SELECT * FROM users WHERE username = '${req.params.username}'`, function (err, results) {
 		if (err) throw err;
 		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@user/:username", "error": null, "response": results}));
 	});
@@ -36,7 +36,7 @@ router.post('/new', function(req, res) {
         lastname: req.body.lastname,
         email: req.body.email || NULL
 	}
-	db.query(`INSERT INTO user (username, password, firstname, lastname, email) VALUES ('${newUser.username}', '${newUser.password}', '${newUser.firstname}', '${newUser.lastname}', '${newUser.email}')`, function (err, results) {
+	db.query(`INSERT INTO users (username, passwd, firstname, lastname, email) VALUES ('${newUser.username}', '${newUser.password}', '${newUser.firstname}', '${newUser.lastname}', '${newUser.email}')`, function (err, results) {
 		if (err) {
 			throw err
 		} else {
@@ -53,7 +53,7 @@ router.post('/update/:username', function(req, res) {
         lastname: req.body.lastname,
         email: req.body.email || NULL
     }
-    db.query(`UPDATE user SET password="${updateUser.password}", firstname="${updateUser.firstname}", lastname="${updateUser.lastname}", email="${updateUser.email}" WHERE username="${req.params.username}"`, function (err, results) {
+    db.query(`UPDATE users SET passwd="${updateUser.password}", firstname="${updateUser.firstname}", lastname="${updateUser.lastname}", email="${updateUser.email}" WHERE username="${req.params.username}"`, function (err, results) {
         if (err) {
             throw err;
         } else {
@@ -64,7 +64,7 @@ router.post('/update/:username', function(req, res) {
 
 // Delete record from user where :username = username
 router.get('/delete/:username', function(req, res) {
-    db.query(`DELETE FROM user WHERE username=${req.params.username}`, function (err, results) {
+    db.query(`DELETE FROM users WHERE username=${req.params.username}`, function (err, results) {
         if (err) throw err;
         res.type('application/json').send(JSON.stringify({"status": 200, "action": "delete@username/delete/:username", "error": null, "response": results}));
 	});
