@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
 
 // Select single user record by 'username'
 router.get('/:username', function(req, res, next) {
-	db.query(`SELECT * FROM user WHERE username = ${req.params.username}`, function (err, results) {
+	db.query(`SELECT * FROM user WHERE username = '${req.params.username}'`, function (err, results) {
 		if (err) throw err;
 		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@user/:username", "error": null, "response": results}));
 	});
