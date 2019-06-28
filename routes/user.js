@@ -10,13 +10,13 @@ router.get('/', function(req, res, next) {
 	});
 });
 
-// Select a single user record by 'user_id'
-router.get('/:id', function(req, res, next) {
-	db.query(`SELECT * FROM user WHERE user_id = ${req.params.id}`, function (err, results) {
-		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@user/:id", "error": null, "response": results}));
-	});
-});
+// // Select a single user record by 'user_id'
+// router.get('/:id', function(req, res, next) {
+// 	db.query(`SELECT * FROM user WHERE user_id = ${req.params.id}`, function (err, results) {
+// 		if (err) throw err;
+// 		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@user/:id", "error": null, "response": results}));
+// 	});
+// });
 
 // Select single user record by 'username'
 router.get('/:username', function(req, res, next) {
