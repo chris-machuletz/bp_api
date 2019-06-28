@@ -68,12 +68,12 @@
                 case "/user/new":
                     document.getElementById("link-input").value = "/user/new"
                     document.getElementById("method_post").checked = true;
-                    document.getElementById("request_data").value = '{"username": "mustermann", "passwd": "abcd1234", "firstname": "Max", "lastname": "Mustermann", "email": "m.mustermann@gmail.com"}';
+                    document.getElementById("request_data").value = '{"username": "mustermann", "password": "abcd1234", "firstname": "Max", "lastname": "Mustermann", "email": "m.mustermann@gmail.com"}';
                     break;
                 case "/user/update/:username":
                     document.getElementById("link-input").value = "/user/update/mustermann"
                     document.getElementById("method_post").checked = true;
-                    document.getElementById("request_data").value = '{"passwd": "abcd1234", "firstname": "Max", "lastname": "Mustermann", "email": "m.mustermann@gmail.com"}';
+                    document.getElementById("request_data").value = '{"password": "abcd1234", "firstname": "Max", "lastname": "Mustermann", "email": "m.mustermann@gmail.com"}';
                     break;
                 case "andere":
                     document.getElementById("request_data").value = 'Enter JSON...';
