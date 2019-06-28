@@ -53,7 +53,7 @@ router.post('/update/:username', function(req, res) {
         lastname: req.body.lastname,
         email: req.body.email || NULL
     }
-    db.query(`UPDATE user SET password="${updateUser.password}", firstname="${updateUser.firstname}", lastname="${updateUser.lastname}", email="${updateUser.email}" WHERE username=${req.params.username}`, function (err, results) {
+    db.query(`UPDATE user SET password="${updateUser.password}", firstname="${updateUser.firstname}", lastname="${updateUser.lastname}", email="${updateUser.email}" WHERE username="${req.params.username}"`, function (err, results) {
         if (err) {
             throw err;
         } else {
