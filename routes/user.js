@@ -12,9 +12,9 @@ router.get('/', function(req, res, next) {
 
 // Select a single user record by 'user_id'
 router.get('/:id', function(req, res, next) {
-	db.query(`SELECT * FROM user WHERE pfleger_id = ${req.params.id}`, function (err, results) {
+	db.query(`SELECT * FROM user WHERE user_id = ${req.params.id}`, function (err, results) {
 		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@pfleger/:id", "error": null, "response": results}));
+		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@user/:id", "error": null, "response": results}));
 	});
 });
 
@@ -63,7 +63,7 @@ router.post('/update/:username', function(req, res) {
 });
 
 // Delete record from user where :username = username
-router.get('/delete/:username', function(req, res, next) {
+router.get('/delete/:username', function(req, res) {
     db.query(`DELETE FROM user WHERE username=${req.params.username}`, function (err, results) {
         if (err) throw err;
         res.type('application/json').send(JSON.stringify({"status": 200, "action": "delete@username/delete/:username", "error": null, "response": results}));
