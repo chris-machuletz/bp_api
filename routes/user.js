@@ -64,7 +64,7 @@ router.post('/update/:username', function(req, res) {
 
 // Delete record from user where :username = username
 router.get('/delete/:username', function(req, res) {
-    db.query(`DELETE FROM users WHERE username=${req.params.username}`, function (err, results) {
+    db.query(`DELETE FROM users WHERE username="${req.params.username}"`, function (err, results) {
         if (err) throw err;
         res.type('application/json').send(JSON.stringify({"status": 200, "action": "delete@username/delete/:username", "error": null, "response": results}));
 	});
