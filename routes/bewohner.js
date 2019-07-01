@@ -18,6 +18,14 @@ router.get('/:id', function(req, res, next) {
 	});
 });
 
+// Select a single record from bewohner where id=zimmernummer
+router.get('/:zimmernummer', function(req, res, next) {
+	db.query(`SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner WHERE zimmernummer = ${req.params.zimmernummer}`, function (err, results) {
+		if (err) throw err;
+		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner/:zimmernummer", "error": null, "response": results}));
+	});
+});
+
 // Add new record to bewohner
 router.post('/new', function(req, res) {
 	
