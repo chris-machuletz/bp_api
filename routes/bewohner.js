@@ -22,7 +22,7 @@ router.get('/:id', function(req, res, next) {
 router.get('/zimmernummer/:id', function(req, res, next) {
 	db.query(`SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner WHERE zimmernummer = ${req.params.id}`, function (err, results) {
 		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner/:zimmernummer", "error": null, "response": results}));
+		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner/zimmernummer/:id", "error": null, "response": results}));
 	});
 });
 
