@@ -4,7 +4,8 @@ const db = require('../dbconn');
 
 // Select all records from bewohner
 router.get('/', function(req, res, next) {
-	db.query('SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner', function (err, results) {
+	db.query('SELECT bewohner.bewohner_id, bewohner.nachname, bewohner.vorname, bewohner.zimmernummer, wohnbereich.name as wohnbereich, bewohner.pflegegrad, DATE_FORMAT(bewohner.geburtsdatum, "%d.%m.%Y") as geburtsdatum, bewohner.geschlecht from bewohner, zimmer, wohnbereich\
+	WHERE bewohner.zimmernummer = zimmer.zimmernummer AND zimmer.wohnbereich_id = wohnbereich.wohnbereich_id', function (err, results) {
         if (err) throw err;
         res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner/", "error": null, "response": results}));
 	});
@@ -12,15 +13,34 @@ router.get('/', function(req, res, next) {
 
 // Select a single record from bewohner
 router.get('/:id', function(req, res, next) {
-	db.query(`SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner WHERE bewohner_id = ${req.params.id}`, function (err, results) {
+	db.query(`SELECT bewohner.bewohner_id, bewohner.nachname, bewohner.vorname, bewohner.zimmernummer, wohnbereich.name as wohnbereich, bewohner.pflegegrad, DATE_FORMAT(bewohner.geburtsdatum, "%d.%m.%Y") as geburtsdatum, bewohner.geschlecht from bewohner, zimmer, wohnbereich\
+	WHERE bewohner.zimmernummer = zimmer.zimmernummer AND zimmer.wohnbereich_id = wohnbereich.wohnbereich_id AND bewohner.bewohner_id = ${req.params.id}; SELECT kontaktperson.kontaktperson_id, kontaktperson.nachname, kontaktperson.vorname, kp_bezeichnung.name as bezeichnung, kontaktperson.telefon FROM kontaktperson\
+    INNER JOIN kp_bezeichnung ON kontaktperson.kp_bezeichnung_id=kp_bezeichnung.kp_bezeichnung_id\
+    INNER JOIN bewohner ON kontaktperson.bewohner_id=bewohner.bewohner_id\
+    WHERE kontaktperson.bewohner_id=${req.params.id}`, function (err, results) {
 		if (err) throw err;
-		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner/:id", "error": null, "response": results}));
+		// let resObj = JSON.stringify(results[0]);
+		// let insertObj = JSON.stringify(results[1]);
+		// resObj.nachname = 'test';
+		// results[0] = JSON.parse(resObj);
+		// console.log(resObj);
+		// let testObj = { test: 'test'};
+		// testObj.time = '00:01';
+		// testObj.res = results[0];
+		// testObj.kontaktperson = results[1];
+		// console.log(insertObj);
+
+		let testObj = JSON.parse(JSON.stringify(results[0]));
+		testObj[0].kontaktperson = results[1];
+		console.log(testObj);
+		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner/:id", "error": null, "response": testObj}));
 	});
 });
 
 // Select a single record from bewohner where id=zimmernummer
 router.get('/zimmernummer/:id', function(req, res, next) {
-	db.query(`SELECT *, DATE_FORMAT(geburtsdatum, "%d.%m.%Y") as geburtsdatum FROM bewohner WHERE zimmernummer = ${req.params.id}`, function (err, results) {
+	db.query(`SELECT bewohner.bewohner_id, bewohner.nachname, bewohner.vorname, bewohner.zimmernummer, wohnbereich.name as wohnbereich, bewohner.pflegegrad, DATE_FORMAT(bewohner.geburtsdatum, "%d.%m.%Y") as geburtsdatum, bewohner.geschlecht from bewohner, zimmer, wohnbereich\
+	WHERE bewohner.zimmernummer = zimmer.zimmernummer AND zimmer.wohnbereich_id = wohnbereich.wohnbereich_id AND bewohner.zimmernummer = ${req.params.id}`, function (err, results) {
 		if (err) throw err;
 		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@bewohner/zimmernummer/:id", "error": null, "response": results}));
 	});

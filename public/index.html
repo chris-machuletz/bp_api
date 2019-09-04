@@ -8,7 +8,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/style.css">
-    <title>API auf imkerei-bienenfreund.de</title>
+    <title>API für Bachelorprojekt 2019 | Digitale Medien | Hochschule Fulda</title>
 </head>
 
 <body class="container mb-5">
@@ -31,12 +31,12 @@
         <tbody>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner">/bewohner</a></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/bewohner">/bewohner</a></td>
                 <td>Gibt alle Bewohner zurück</td>
             </tr>
             <tr>
                 <td><span class="post_method method_post">POST</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/toolkit.html">/bewohner/new</a></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/toolkit.html">/bewohner/new</a></td>
                 <td>Fügt einen neuen Bewohner hinzu<br>
                     <i>@params nachname(string), vorname(string), zimmernummer(int), pflegegrad(int),
                         geburtsdatum(string:'YYYY-MM-DD'), geschlecht(string:['m','w','d'])<br>
@@ -46,12 +46,12 @@
             </tr>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner/1">/bewohner/:id</a></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/bewohner/1">/bewohner/:id</a></td>
                 <td>Gibt Bewohner mit <i>[:id = bewohner_id]</i> zurück</td>
             </tr>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/bewohner/zimmernummer/201">/bewohner/zimmernummer/:id</a></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/bewohner/zimmernummer/201">/bewohner/zimmernummer/:id</a></td>
                 <td>Gibt Bewohner mit <i>[:id = zimmernummer]</i> zurück</td>
             </tr>
         </tbody>
@@ -69,17 +69,17 @@
         <tbody>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/pfleger">/pfleger</a></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/pfleger">/pfleger</a></td>
                 <td>Gibt alle Pfleger zurück</td>
             </tr>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/pfleger/1">/pfleger/:id</a></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/pfleger/1">/pfleger/:id</a></td>
                 <td>Gibt Pfleger mit <i>[:id = pfleger_id]</i> zurück</td>
             </tr>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/pfleger/pn/103">/pfleger/pn/:id</a>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/pfleger/pn/103">/pfleger/pn/:id</a>
                 </td>
                 <td>Gibt Pfleger mit <i>[:id = persnr]</i> zurück</td>
             </tr>
@@ -98,19 +98,19 @@
         <tbody>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/kontaktperson">/kontaktperson</a></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/kontaktperson">/kontaktperson</a></td>
                 <td>Gibt alle Kontaktpersonen aller Bewohner zurück</td>
             </tr>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/kontaktperson/1">/kontaktperson/:id</a>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/kontaktperson/1">/kontaktperson/:id</a>
                 </td>
                 <td>Gibt alle Kontaktpersonen des Bewohners mit <i>[:id = bewohner_id]</i> zurück</td>
             </tr>
             <tr>
                 <td><span class="post_method method_post">POST</span></td>
                 <td><a target="_blank"
-                        href="https://api.imkerei-bienenfreund.de/toolkit.html">/kontaktperson/new/:id</a></td>
+                        href="https://api.dmprojekt19.informatik.hs-fulda.de/toolkit.html">/kontaktperson/new/:id</a></td>
                 <td>Legt neue Kontaktperson für <i>[:id = bewohner_id]</i> an<br>
                     <i>@params kp_bezeichnung_id(int), nachname(string), vorname(string), telefon(string)<br>
                         <span class="bg-danger text-white p-1 pl-3 pr-3 mt-1 d-inline-block rounded">Input wird noch
@@ -120,7 +120,7 @@
             <tr>
                 <td><span class="post_method method_post">POST</span></td>
                 <td><a target="_blank"
-                        href="https://api.imkerei-bienenfreund.de/toolkit.html">/kontaktperson/update/:id</a>
+                        href="https://api.dmprojekt19.informatik.hs-fulda.de/toolkit.html">/kontaktperson/update/:id</a>
                 </td>
                 <td>Ändert Kontaktperson mit <i>[:id = kontaktperson_id]</i><br>
                     <i>@params nachname(string), vorname(string), telefon(string)<br>
@@ -149,19 +149,19 @@
         <tbody>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/user">/user</a></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/user">/user</a></td>
                 <td>Gibt alle Benutzer zurück</td>
             </tr>
             <tr>
                 <td><span class="post_method method_get">GET</span></td>
-                <td><a target="_blank" href="https://api.imkerei-bienenfreund.de/user/mustermann">/user/:username</a>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/user/mustermann">/user/:username</a>
                 </td>
                 <td>Gibt Benutzer mit <i>[:username = username]</i> zurück</td>
             </tr>
             <tr>
                 <td><span class="post_method method_post">POST</span></td>
                 <td><a target="_blank"
-                        href="https://api.imkerei-bienenfreund.de/toolkit.html">/user/new</a></td>
+                        href="https://api.dmprojekt19.informatik.hs-fulda.de/toolkit.html">/user/new</a></td>
                 <td>Legt neuen Benutzer an<br>
                     <i>@params username(string), password(string), firstname(string), lastname(string), email(string[optional])<br>
                         <span class="bg-danger text-white p-1 pl-3 pr-3 mt-1 d-inline-block rounded">Input wird noch
@@ -171,7 +171,7 @@
             <tr>
                 <td><span class="post_method method_post">POST</span></td>
                 <td><a target="_blank"
-                        href="https://api.imkerei-bienenfreund.de/toolkit.html">/user/update/:username</a>
+                        href="https://api.dmprojekt19.informatik.hs-fulda.de/toolkit.html">/user/update/:username</a>
                 </td>
                 <td>Ändert Benutzer mit <i>[:username = username]</i><br>
                     <i>@params password(string), firstname(string), lastname(string), email(string)<br>
@@ -191,8 +191,8 @@
     <!-- LINKS-->
 
     <h5 class="mb-3 pt-4 mt-5 border-top">Links</h5>
-    <a href="https://api.imkerei-bienenfreund.de/toolkit.html" target="_blank">POST request Toolkit</a><br>
-    <a href="https://dev.imkerei-bienenfreund.de/" target="_blank">dev.imkerei-bienenfreund.de</a>
+    <a href="https://api.dmprojekt19.informatik.hs-fulda.de/toolkit.html" target="_blank">POST request Toolkit</a><br>
+    <!-- <a href="https://dev.imkerei-bienenfreund.de/" target="_blank">dev.imkerei-bienenfreund.de</a> -->
 </body>
 
 </html>
