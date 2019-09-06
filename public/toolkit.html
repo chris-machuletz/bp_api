@@ -17,6 +17,7 @@
                 <option value="/bewohner/new">Bewohner anlegen</option>
                 <option value="/kontaktperson/update/:id">Kontaktperson ändern</option>
                 <option value="/kontaktperson/new/:id">Neue Kontaktperson für Bewohner erstellen</option>
+                <option value="/vitalwert/new/:id">Neue Vitalwert-Transaktion für Bewohner erstellen</option>
                 <option value="/user/new">Web-App Benutzer anlegen</option>
                 <option value="/user/update/:username">Web-App Benutzer ändern</option>
                 <option value="andere">andere URL...</option>
@@ -65,6 +66,11 @@
                     document.getElementById("method_post").checked = true;
                     document.getElementById("request_data").value = '{"kp_bezeichnung_id": 4, "nachname": "Mustermann", "vorname": "Max", "telefon": "17123456789"}';
                     break;
+                case "/vitalwert/new/:id":
+                    document.getElementById("link-input").value = "/vitalwert/new/1"
+                    document.getElementById("method_post").checked = true;
+                    document.getElementById("request_data").value = '{"vitalwertId": 7, "messwert": 160, "pflegerId": 3}';
+                    break;
                 case "/user/new":
                     document.getElementById("link-input").value = "/user/new"
                     document.getElementById("method_post").checked = true;
@@ -87,8 +93,11 @@
             console.log(radio);
 
             const path = document.getElementById("link-input").value;
-            //URL vor MERGE auf MASTER zu API.IMKEREI-BIENENFREUND.DE ändern
-            url = "https://api.imkerei-bienenfreund.de" + path;
+
+            //URL vor MERGE auf MASTER zu API.DMPROJEKT19.INFORMATIK.HS_FULDA.DE ändern
+            // url = "http://localhost:3000" + path;
+            url = "https://api.dmprojekt19.informatik.hs-fulda.de" + path;
+
             const data = JSON.parse(document.getElementById("request_data").value);
             options = {
                 headers: {
@@ -111,11 +120,6 @@
                 .then(data => console.log(JSON.stringify(data)))
                 .catch(error => console.error(error));
             window.alert("Daten gesendet!");
-            // let node = document.createElement('span');
-            // let textnode = document.createTextNode('Daten gesendet!');
-            // node.appendChild(textnode);
-            // node.className = "text-success ml-4"
-            // document.getElementById('send_data').appendChild(node);
         }
     </script>
     

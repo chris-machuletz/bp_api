@@ -25,6 +25,7 @@ app.use('/bewohner', require('./routes/bewohner'));
 app.use('/pfleger', require('./routes/pfleger'));
 app.use('/kontaktperson', require('./routes/kontaktperson'));
 app.use('/user', require('./routes/user'));
+app.use('/vitalwert', require('./routes/vitalwert'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
