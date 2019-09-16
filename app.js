@@ -3,10 +3,13 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var expressValidator = require('express-validator');
 var bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 
-const app = express();
+//const expressSession = require('express-session');
+
+const app = express();  //von const auf var geändert
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -17,9 +20,11 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json({ limit: '1mb' }));
+//app.use(expressSession({secret: 'max', saveUninitalized: false, resave: false}));
 
 app.use('/bewohner', require('./routes/bewohner'));
 app.use('/pfleger', require('./routes/pfleger'));

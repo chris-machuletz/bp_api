@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 const db = require('../dbconn');
 
+const { check, validationResult } = require('express-validator');
+const { body } = require('express-validator');
+const { sanitizBody } = require('express-validator');
+
 // Select all records from bewohner
 router.get('/', function(req, res, next) {
 	db.query('SELECT bewohner.bewohner_id, bewohner.nachname, bewohner.vorname, bewohner.zimmernummer, wohnbereich.name as wohnbereich, bewohner.pflegegrad, DATE_FORMAT(bewohner.geburtsdatum, "%d.%m.%Y") as geburtsdatum, bewohner.geschlecht from bewohner, zimmer, wohnbereich\
@@ -47,7 +51,41 @@ router.get('/zimmernummer/:id', function(req, res, next) {
 });
 
 // Add new record to bewohner
-router.post('/new', function(req, res) {
+router.post('/new', [
+    /*check('username').isLength({ min: 2 , max: 10}),
+    check('password').isLength({ min: 5 }),
+    check('email').isEmail()*/
+    body('nachname')
+        .isEmail()
+        .normalizeEmail(),
+    body('vorname')
+        .not().isEmpty()
+        .trim()
+        .isAlpha(),
+    body('zimmernummer')	//zahl max 3 zeichen
+        .not().isEmpty()
+        .isLength({min: 5}),
+    body('pflegegrad')	//einzelne zahl
+        .not().isEmpty()
+        .trim()
+        .isAlpha()
+        .isLength({min: 2}),
+    body('geburtsdatum')	//nur datum
+        .not().isEmpty()
+        .trim()
+        .isAlpha()
+        .isLength({min: 2}),
+	body('geschlecht')		//m w oder d
+        .not().isEmpty()
+        .trim()
+        .isAlpha()
+        .isLength({min: 2}),
+],  function(req, res) {
+	
+	const error = validationResult(req);
+    if(!error.isEmpty()) {
+        return res.status(422).json({ error: error.array()});
+	}
 	
 	const newBewohner = {
 		nachname: req.body.nachname,

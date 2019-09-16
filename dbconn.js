@@ -11,21 +11,21 @@ const mysql = require('mysql');
 
 
 //DB connection for dmprojekt19
-const db = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'fdai',
-    password : 'gPpK/tP*Iz$&',
-    database : 'bp_pflegeheim',
-    multipleStatements: true
-});
+//onst db = mysql.createConnection({
+//    host     : 'localhost',
+//    user     : 'fdai',
+//    password : 'gPpK/tP*Iz$&',
+//    database : 'bp_pflegeheim',
+//    multipleStatements: true
+//});
 
 //DB connection for localhost
-// const db = mysql.createConnection({
-//     host     : 'localhost',
-//     user     : 'root',
-//     database : 'bp_pflegeheim',
-//     multipleStatements: true
-// });
+ const db = mysql.createConnection({
+     host     : 'localhost',
+     user     : 'root',
+     database : 'bp_pflegeheim',
+     multipleStatements: true
+ });
 
 //Connect
 db.connect((err) => {
