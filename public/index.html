@@ -57,6 +57,46 @@
         </tbody>
     </table>
 
+    <!-- VITALWERTE -->
+
+    <h5 class="mb-3 mt-4">Vitalwerte</h5>
+    <table class="table table-sm table-hover table-bordered">
+        <thead>
+            <th scope="col">Method</th>
+            <th scope="col">URL</th>
+            <th scope="col">Beschreibung</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="post_method method_get">GET</span></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/vitalwert/all">/vitalwert/all</a></td>
+                <td>Gibt alle Vitalwerteinträge aller Bewohner zurück</td>
+            </tr>
+            <tr>
+                <td><span class="post_method method_get">GET</span></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/vitalwert/1">/vitalwert/:id</a></td>
+                <td>Gibt alle Vitalwerteinträge des Bewohners <i>[:id = bewohner_id]</i> zurück</td>
+            </tr>
+            <tr>
+                <td><span class="post_method method_get">GET</span></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/vitalwert/1/5">/vitalwert/:val1/:val2</a></td>
+                <td>Gibt alle Einträge eines bestimmten vitalwerts <i>[val1]</i> eines bestimmten Bewohners <i>[val2 = bewohner_id]</i> zurück <br>
+                <em>oder:</em> Gibt Anzahl <i>[val2]</i> letzter Vitalwert-Einträge eines Bewohners <i>[val1 = bewohner_id]</i> zurück</td>
+            </tr>
+            <tr>
+                <td><span class="post_method method_get">GET</span></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/vitalwert/gewicht/1/5">/vitalwert/:vitalwert/:bewohnerId/:count</a></td>
+                <td>Gibt Anzahl <i>[count]</i> letzter Einträge eines bestimmten Vitalwertes <i>[vitalwert]</i> eines Bewohners <i>[:bewohnerId = bewohner_id]</i> zurück<br>
+                Zulässige Bezeichnungen: puls_min, blutdruck_sys, blutdruck_dia, koerpertemp, blutzucker, bmi, groesse, gewicht</td>
+            </tr>
+            <tr>
+                <td><span class="post_method method_post">POST</span></td>
+                <td><a target="_blank" href="https://api.dmprojekt19.informatik.hs-fulda.de/toolkit.html">/vitalwert/new/:id</a></td>
+                <td>Legt einen neuen Vitalwert-Eintrag für Bewohner <i>[id]</i> an</td>
+            </tr>
+        </tbody>
+    </table>
+
     <!-- PERSONALDATEN -->
 
     <h5 class="mb-3 mt-4">Personaldaten</h5>
@@ -191,8 +231,7 @@
     <!-- LINKS-->
 
     <h5 class="mb-3 pt-4 mt-5 border-top">Links</h5>
-    <a href="https://api.dmprojekt19.informatik.hs-fulda.de/toolkit.html" target="_blank">POST request Toolkit</a><br>
-    <!-- <a href="https://dev.imkerei-bienenfreund.de/" target="_blank">dev.imkerei-bienenfreund.de</a> -->
+    <a href="https://api.dmprojekt19.informatik.hs-fulda.de/toolkit.html" target="_blank">POST request Toolkit</a> (<a href="http://localhost:3000/toolkit.html" target="_blank" rel="noopener noreferrer">localhost</a>)<br>
 </body>
 
 </html>
