@@ -40,8 +40,6 @@
                 <td>Fügt einen neuen Bewohner hinzu<br>
                     <i>@params nachname(string), vorname(string), zimmernummer(int), pflegegrad(int),
                         geburtsdatum(string:'YYYY-MM-DD'), geschlecht(string:['m','w','d'])<br>
-                        <span class="bg-danger text-white p-1 pl-3 pr-3 mt-1 d-inline-block rounded">Input wird noch
-                            nicht validiert!</span></i>
                 </td>
             </tr>
             <tr>
@@ -153,8 +151,6 @@
                         href="https://api.dmprojekt19.informatik.hs-fulda.de/toolkit.html">/kontaktperson/new/:id</a></td>
                 <td>Legt neue Kontaktperson für <i>[:id = bewohner_id]</i> an<br>
                     <i>@params kp_bezeichnung_id(int), nachname(string), vorname(string), telefon(string)<br>
-                        <span class="bg-danger text-white p-1 pl-3 pr-3 mt-1 d-inline-block rounded">Input wird noch
-                            nicht validiert!</span>
                 </td>
             </tr>
             <tr>
@@ -164,8 +160,6 @@
                 </td>
                 <td>Ändert Kontaktperson mit <i>[:id = kontaktperson_id]</i><br>
                     <i>@params nachname(string), vorname(string), telefon(string)<br>
-                        <span class="bg-danger text-white p-1 pl-3 pr-3 mt-1 d-inline-block rounded">Input wird noch
-                            nicht validiert!</span>
                 </td>
             </tr>
             <tr>
