@@ -38,11 +38,11 @@ router.post('/new/:id', [
         .not().isEmpty()
         .trim()
         .isAlpha(),
-	body('kp_bezeichnung_id')	//??????????
+	body('kp_bezeichnung_id')	
 		.trim()
 		.isInt()
         .not().isEmpty(),
-	body('telefon')	
+	body('telefon')	//hier muss noch die entfernung von / - und leertaste hinzugefügt werden, damit es benutzerfreundlicher ist
         .trim()
         .isInt()
         .isLength({min: 3, max: 15})
