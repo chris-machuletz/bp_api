@@ -52,34 +52,34 @@ router.get('/zimmernummer/:id', function(req, res, next) {
 
 // Add new record to bewohner
 router.post('/new', [
-    /*check('username').isLength({ min: 2 , max: 10}),
-    check('password').isLength({ min: 5 }),
-    check('email').isEmail()*/
     body('nachname')
-        .isEmail()
-        .normalizeEmail(),
+		.not().isEmpty()
+		.trim()
+		.isAlpha(),
     body('vorname')
         .not().isEmpty()
         .trim()
         .isAlpha(),
-    body('zimmernummer')	//zahl max 3 zeichen
+	body('zimmernummer')	//zahl max 3 zeichen
+		.trim()
+		.isInt()
         .not().isEmpty()
-        .isLength({min: 5}),
-    body('pflegegrad')	//einzelne zahl
-        .not().isEmpty()
-        .trim()
-        .isAlpha()
-        .isLength({min: 2}),
+        .isLength({min: 3, max: 3}),
+	body('pflegegrad')	//einzelne zahl
+		.trim()
+		.isInt()
+		.not().isEmpty()
+		.isLength({max: 1}),
     body('geburtsdatum')	//nur datum
         .not().isEmpty()
         .trim()
-        .isAlpha()
-        .isLength({min: 2}),
+        .isISO8601(),
 	body('geschlecht')		//m w oder d
         .not().isEmpty()
         .trim()
-        .isAlpha()
-        .isLength({min: 2}),
+		.isAlpha()
+		.isLength({max: 1})
+        .isWhitelisted("m, w, d"),	
 ],  function(req, res) {
 	
 	const error = validationResult(req);

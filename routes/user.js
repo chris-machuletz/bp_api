@@ -37,7 +37,28 @@ res.redirect();
 // });
 
 // Select single user record by 'username'
-router.get('/:username', function(req, res, next) {
+router.get('/:username', [    
+    body('email')
+        .isEmail()
+        .normalizeEmail(),
+    body('username')
+        .not().isEmpty()
+        .trim()
+        .isAlpha(),
+    body('password')    //achtung hier ist es noch möglich code reinzuklatschen
+        .not().isEmpty()
+        .isLength({min: 5}),
+    body('firstname')
+        .not().isEmpty()
+        .trim()
+        .isAlpha()
+        .isLength({min: 2}),
+    body('lastname')
+        .not().isEmpty()
+        .trim()
+        .isAlpha()
+        .isLength({min: 2}),
+], function(req, res, next) {
 	db.query(`SELECT * FROM users WHERE username = '${req.params.username}'`, function (err, results) {
 		if (err) throw err;
 		res.type('application/json').send(JSON.stringify({"status": 200, "action": "get@user/:username", "error": null, "response": results}));

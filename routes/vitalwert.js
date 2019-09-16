@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 const db = require('../dbconn');
 
+const { check, validationResult } = require('express-validator');
+const { body } = require('express-validator');
+const { sanitizBody } = require('express-validator');
+
 // Select all records from vitalwerttransaktion
 router.get('/all', function (req, res, next) {
     db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d %H:%i:%s') as datum\
@@ -72,8 +76,27 @@ router.get('/:vitalwert/:bewohnerId/:count', function (req, res, next) {
 });
 
 // Add new record to vitalwerttransaktion @param(id) = bewohner_id
-router.post('/new/:id', function(req, res) {
-	
+router.post('/new/:id', [
+    body('vitalwertId')
+		.not().isEmpty()
+		.trim()
+		.isInt(),
+    body('messwert')
+        .not().isEmpty()
+        .trim()
+		.isNumeric(),
+	body('pflegerId')	
+		.trim()
+		.isInt()
+        .not().isEmpty()
+        .isLength({max: 3}),
+], function(req, res) {
+    
+    const error = validationResult(req);
+    if(!error.isEmpty()) {
+        return res.status(422).json({ error: error.array()});
+	}
+       
 	const newVT = {
         vitalwertId: parseInt(req.body.vitalwertId),
         messwert: req.body.messwert,

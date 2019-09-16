@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 const db = require('../dbconn');
 
+const { check, validationResult } = require('express-validator');
+const { body } = require('express-validator');
+const { sanitizBody } = require('express-validator');
+
 // Select all records from kontaktperson
 router.get('/', function(req, res, next) {
 	db.query(`SELECT kontaktperson.kontaktperson_id, kontaktperson.nachname, kontaktperson.vorname, kp_bezeichnung.name as bezeichnung, CONCAT(bewohner.vorname, ' ', bewohner.nachname, ' (id:', bewohner.bewohner_id, ')') as bewohner, kontaktperson.telefon FROM kontaktperson\
@@ -25,8 +29,31 @@ router.get('/:id', function(req, res, next) {
 });
 
 // Add new record to kontaktperson
-router.post('/new/:id', function(req, res) {
-	
+router.post('/new/:id', [
+    body('nachname')
+		.not().isEmpty()
+		.trim()
+		.isAlpha(),
+    body('vorname')
+        .not().isEmpty()
+        .trim()
+        .isAlpha(),
+	body('kp_bezeichnung_id')	//??????????
+		.trim()
+		.isInt()
+        .not().isEmpty(),
+	body('telefon')	
+        .trim()
+        .isInt()
+        .isLength({min: 3, max: 15})
+        .not().isEmpty(),
+], function(req, res) {
+    
+    const error = validationResult(req);
+    if(!error.isEmpty()) {
+        return res.status(422).json({ error: error.array()});
+    }
+    
 	const newKP = {
         kp_bezeichnung_id: parseInt(req.body.kp_bezeichnung_id),
         nachname: req.body.nachname,
@@ -43,7 +70,21 @@ router.post('/new/:id', function(req, res) {
 });
 
 // Update record from kontaktperson where :id = kontaktperson_id
-router.post('/update/:id', function(req, res) {
+router.post('/update/:id', [
+    body('nachname')
+		.not().isEmpty()
+		.trim()
+		.isAlpha(),
+    body('vorname')
+        .not().isEmpty()
+        .trim()
+        .isAlpha(),
+	body('telefon')	
+		.trim()
+        .isInt()
+        .isLength({min: 3, max: 15})
+		.not().isEmpty(),
+], function(req, res) {
     const updateKP = {
         nachname: req.body.nachname,
         vorname: req.body.vorname,
