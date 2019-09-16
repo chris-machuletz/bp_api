@@ -8,7 +8,7 @@ const { sanitizBody } = require('express-validator');
 
 // Select all records from vitalwerttransaktion
 router.get('/all', function (req, res, next) {
-    db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d %H:%i:%s') as datum\
+    db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d') as datum, DATE_FORMAT(vitalwerttransaktion.datum, '%H:%i:%s') as uhrzeit\
     FROM vitalwerttransaktion, vitalwert, bewohner, pfleger\
     WHERE vitalwerttransaktion.bewohner_id = bewohner.bewohner_id AND vitalwerttransaktion.vitalwert_id = vitalwert.vitalwert_id AND vitalwerttransaktion.pfleger_id = pfleger.pfleger_id ORDER BY vitalwerttransaktion.datum DESC`, function (err, results) {
         if (err) throw err;
@@ -18,7 +18,7 @@ router.get('/all', function (req, res, next) {
 
 // Select all vitalwerttransaktion records from a single bewohner
 router.get('/:id', function (req, res, next) {
-    db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d %H:%i:%s') as datum\
+    db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d') as datum, DATE_FORMAT(vitalwerttransaktion.datum, '%H:%i:%s') as uhrzeit\
     FROM vitalwerttransaktion, vitalwert, bewohner, pfleger\
     WHERE vitalwerttransaktion.bewohner_id = bewohner.bewohner_id AND vitalwerttransaktion.vitalwert_id = vitalwert.vitalwert_id AND vitalwerttransaktion.pfleger_id = pfleger.pfleger_id AND bewohner.bewohner_id = ${req.params.id} ORDER BY vitalwerttransaktion.datum DESC`, function (err, results) {
         if (err) throw err;
@@ -48,14 +48,14 @@ router.get('/:id', function (req, res, next) {
  */
 router.get('/:val1/:val2', function (req, res, next) {
     if (!isNaN(req.params.val1)) {
-        db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d %H:%i:%s') as datum\
+        db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d') as datum, DATE_FORMAT(vitalwerttransaktion.datum, '%H:%i:%s') as uhrzeit\
         FROM vitalwerttransaktion, vitalwert, bewohner, pfleger\
         WHERE vitalwerttransaktion.bewohner_id = bewohner.bewohner_id AND vitalwerttransaktion.vitalwert_id = vitalwert.vitalwert_id AND vitalwerttransaktion.pfleger_id = pfleger.pfleger_id AND bewohner.bewohner_id = ${req.params.val1} ORDER BY vitalwerttransaktion.datum DESC LIMIT ${req.params.val2}`, function (err, results) {
         if (err) throw err;
             res.type('application/json').send(JSON.stringify({ "status": 200, "action": `get@vitalwert/${req.params.val1}/${req.params.val2}`, "error": null, "response": results }));
         });
     } else {
-        db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d %H:%i:%s') as datum\
+        db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d') as datum, DATE_FORMAT(vitalwerttransaktion.datum, '%H:%i:%s') as uhrzeit\
         FROM vitalwerttransaktion, vitalwert, bewohner, pfleger\
         WHERE vitalwerttransaktion.bewohner_id = bewohner.bewohner_id AND vitalwerttransaktion.vitalwert_id = vitalwert.vitalwert_id AND vitalwerttransaktion.pfleger_id = pfleger.pfleger_id AND bewohner.bewohner_id = ${req.params.val2} AND vitalwert.bezeichnung = '${req.params.val1}' ORDER BY vitalwerttransaktion.datum DESC`, function (err, results) {
         if (err) throw err;
@@ -67,7 +67,7 @@ router.get('/:val1/:val2', function (req, res, next) {
 
 // Select last (count) records from a single bewohner and a specific vitalwert
 router.get('/:vitalwert/:bewohnerId/:count', function (req, res, next) {
-    db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d %H:%i:%s') as datum\
+    db.query(`SELECT vitalwerttransaktion.vitalwerttransaktion_id, vitalwerttransaktion.bewohner_id, CONCAT(bewohner.vorname, ' ', bewohner.nachname) as bewohner, vitalwerttransaktion.vitalwert_id, vitalwert.name as vitalwert, vitalwerttransaktion.messwert, vitalwerttransaktion.pfleger_id, CONCAT(pfleger.vorname, ' ', pfleger.nachname) as pfleger, DATE_FORMAT(vitalwerttransaktion.datum, '%Y-%m-%d') as datum, DATE_FORMAT(vitalwerttransaktion.datum, '%H:%i:%s') as uhrzeit\
     FROM vitalwerttransaktion, vitalwert, bewohner, pfleger\
     WHERE vitalwerttransaktion.bewohner_id = bewohner.bewohner_id AND vitalwerttransaktion.vitalwert_id = vitalwert.vitalwert_id AND vitalwerttransaktion.pfleger_id = pfleger.pfleger_id AND bewohner.bewohner_id = ${req.params.bewohnerId} AND vitalwert.bezeichnung = '${req.params.vitalwert}' ORDER BY vitalwerttransaktion.datum DESC LIMIT ${req.params.count}`, function (err, results) {
         if (err) throw err;
